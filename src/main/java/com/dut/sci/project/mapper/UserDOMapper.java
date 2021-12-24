@@ -10,13 +10,21 @@ public interface UserDOMapper {
 
     int deleteByExample(UserDOExample example);
 
+    int deleteByPrimaryKey(Long userId);
+
     int insert(UserDO record);
 
     int insertSelective(UserDO record);
 
     List<UserDO> selectByExample(UserDOExample example);
 
+    UserDO selectByPrimaryKey(Long userId);
+
     int updateByExampleSelective(@Param("record") UserDO record, @Param("example") UserDOExample example);
 
     int updateByExample(@Param("record") UserDO record, @Param("example") UserDOExample example);
+
+    int updateByPrimaryKeySelective(UserDO record);
+
+    int updateByPrimaryKey(UserDO record);
 }

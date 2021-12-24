@@ -1,40 +1,38 @@
 package com.dut.sci.project.domain;
 
-import java.util.Date;
-
 public class UserDO {
-    private Integer id;
+    private Long userId;
 
-    private String accountName;
+    private String userPassword;
 
     private String userName;
 
+    private String userPhoneNumber;
+
+    private String userEmail;
+
+    private Boolean userGender;
+
+    private String userCollege;
+
+    private String userClass;
+
     private Integer userType;
 
-    private Date lastLoginTime;
-
-    private Date gmtCreated;
-
-    private Date gmtModified;
-
-    private String value1;
-
-    private String value2;
-
-    public Integer getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName == null ? null : accountName.trim();
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword == null ? null : userPassword.trim();
     }
 
     public String getUserName() {
@@ -45,51 +43,51 @@ public class UserDO {
         this.userName = userName == null ? null : userName.trim();
     }
 
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
+    }
+
+    public void setUserPhoneNumber(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber == null ? null : userPhoneNumber.trim();
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail == null ? null : userEmail.trim();
+    }
+
+    public Boolean getUserGender() {
+        return userGender;
+    }
+
+    public void setUserGender(Boolean userGender) {
+        this.userGender = userGender;
+    }
+
+    public String getUserCollege() {
+        return userCollege;
+    }
+
+    public void setUserCollege(String userCollege) {
+        this.userCollege = userCollege == null ? null : userCollege.trim();
+    }
+
+    public String getUserClass() {
+        return userClass;
+    }
+
+    public void setUserClass(String userClass) {
+        this.userClass = userClass == null ? null : userClass.trim();
+    }
+
     public Integer getUserType() {
         return userType;
     }
 
     public void setUserType(Integer userType) {
         this.userType = userType;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
-    public Date getGmtCreated() {
-        return gmtCreated;
-    }
-
-    public void setGmtCreated(Date gmtCreated) {
-        this.gmtCreated = gmtCreated;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    public String getValue1() {
-        return value1;
-    }
-
-    public void setValue1(String value1) {
-        this.value1 = value1 == null ? null : value1.trim();
-    }
-
-    public String getValue2() {
-        return value2;
-    }
-
-    public void setValue2(String value2) {
-        this.value2 = value2 == null ? null : value2.trim();
     }
 }
