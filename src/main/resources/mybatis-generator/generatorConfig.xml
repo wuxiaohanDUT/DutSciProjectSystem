@@ -27,7 +27,7 @@
         </javaTypeResolver>
 
         <!-- 实体类的包名和存放路径 -->
-        <javaModelGenerator targetPackage="com.example.demo.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.dut.sci.project.domain" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -38,12 +38,12 @@
         </sqlMapGenerator>
 
         <!-- 生成DAO的包名和位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dut.sci.project.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- tableName：数据库中的表名或视图名；domainObjectName：生成的实体类的类名-->
-        <table tableName="pics" domainObjectName="Pictrue"
+        <table tableName="user" domainObjectName="UserDO"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
