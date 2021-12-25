@@ -7,12 +7,15 @@
     <!--    注释掉-->
     <!--    <classPathEntry location="${driverLocation}"/>-->
 
+
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
+
 
         <!--数据库连接参数 -->
         <jdbcConnection
@@ -43,7 +46,7 @@
         </javaClientGenerator>
 
         <!-- tableName：数据库中的表名或视图名；domainObjectName：生成的实体类的类名-->
-        <table tableName="user" domainObjectName="UserDO"
+        <table tableName="score_records" domainObjectName="ScoreRecordDO"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"

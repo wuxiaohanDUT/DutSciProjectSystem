@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.UserDO;
 import com.dut.sci.project.domain.UserDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface UserDOMapper {
     long countByExample(UserDOExample example);
@@ -15,6 +16,8 @@ public interface UserDOMapper {
     int insert(UserDO record);
 
     int insertSelective(UserDO record);
+
+    List<UserDO> selectByExampleWithRowbounds(UserDOExample example, RowBounds rowBounds);
 
     List<UserDO> selectByExample(UserDOExample example);
 

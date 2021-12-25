@@ -226,6 +226,36 @@
       publication_time = #{publicationTime,jdbcType=TIMESTAMP}
     where paper_id = #{paperId,jdbcType=BIGINT}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.PaperDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_paper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.PaperDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_paper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <resultMap id="BaseResultMap" type="com.dut.sci.project.domain.PaperDO">
     <id column="paper_id" jdbcType="BIGINT" property="paperId" />
     <result column="author_ids" jdbcType="VARCHAR" property="authorIds" />
@@ -451,4 +481,19 @@
       publication_time = #{publicationTime,jdbcType=TIMESTAMP}
     where paper_id = #{paperId,jdbcType=BIGINT}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.PaperDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_paper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

@@ -304,6 +304,51 @@
       img_urls = #{imgUrls,jdbcType=VARCHAR}
     where form_id = #{formId,jdbcType=BIGINT}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <resultMap id="BaseResultMap" type="com.dut.sci.project.domain.FormDO">
     <id column="form_id" jdbcType="BIGINT" property="formId" />
     <result column="form_status" jdbcType="TINYINT" property="formStatus" />
@@ -592,6 +637,36 @@
       form_type = #{formType,jdbcType=INTEGER}
     where form_id = #{formId,jdbcType=BIGINT}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <resultMap id="BaseResultMap" type="com.dut.sci.project.domain.FormDO">
     <id column="form_id" jdbcType="BIGINT" property="formId" />
     <result column="form_status" jdbcType="TINYINT" property="formStatus" />
@@ -865,4 +940,19 @@
       project_id = #{projectId,jdbcType=BIGINT}
     where form_id = #{formId,jdbcType=BIGINT}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from application_form
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

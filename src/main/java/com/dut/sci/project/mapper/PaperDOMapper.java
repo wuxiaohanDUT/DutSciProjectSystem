@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.PaperDO;
 import com.dut.sci.project.domain.PaperDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface PaperDOMapper {
     long countByExample(PaperDOExample example);
@@ -15,6 +16,8 @@ public interface PaperDOMapper {
     int insert(PaperDO record);
 
     int insertSelective(PaperDO record);
+
+    List<PaperDO> selectByExampleWithRowbounds(PaperDOExample example, RowBounds rowBounds);
 
     List<PaperDO> selectByExample(PaperDOExample example);
 

@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.FormDO;
 import com.dut.sci.project.domain.FormDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface FormDOMapper {
     long countByExample(FormDOExample example);
@@ -15,6 +16,8 @@ public interface FormDOMapper {
     int insert(FormDO record);
 
     int insertSelective(FormDO record);
+
+    List<FormDO> selectByExampleWithRowbounds(FormDOExample example, RowBounds rowBounds);
 
     List<FormDO> selectByExample(FormDOExample example);
 

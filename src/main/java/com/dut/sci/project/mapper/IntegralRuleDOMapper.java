@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.IntegralRuleDO;
 import com.dut.sci.project.domain.IntegralRuleDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface IntegralRuleDOMapper {
     long countByExample(IntegralRuleDOExample example);
@@ -15,6 +16,8 @@ public interface IntegralRuleDOMapper {
     int insert(IntegralRuleDO record);
 
     int insertSelective(IntegralRuleDO record);
+
+    List<IntegralRuleDO> selectByExampleWithRowbounds(IntegralRuleDOExample example, RowBounds rowBounds);
 
     List<IntegralRuleDO> selectByExample(IntegralRuleDOExample example);
 

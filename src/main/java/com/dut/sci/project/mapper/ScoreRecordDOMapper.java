@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.ScoreRecordDO;
 import com.dut.sci.project.domain.ScoreRecordDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface ScoreRecordDOMapper {
     long countByExample(ScoreRecordDOExample example);
@@ -15,6 +16,8 @@ public interface ScoreRecordDOMapper {
     int insert(ScoreRecordDO record);
 
     int insertSelective(ScoreRecordDO record);
+
+    List<ScoreRecordDO> selectByExampleWithRowbounds(ScoreRecordDOExample example, RowBounds rowBounds);
 
     List<ScoreRecordDO> selectByExample(ScoreRecordDOExample example);
 

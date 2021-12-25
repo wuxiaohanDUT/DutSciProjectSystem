@@ -274,4 +274,19 @@
       user_type = #{userType,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.UserDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

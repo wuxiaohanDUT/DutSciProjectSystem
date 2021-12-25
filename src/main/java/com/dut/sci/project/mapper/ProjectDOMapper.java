@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.ProjectDO;
 import com.dut.sci.project.domain.ProjectDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface ProjectDOMapper {
     long countByExample(ProjectDOExample example);
@@ -15,6 +16,8 @@ public interface ProjectDOMapper {
     int insert(ProjectDO record);
 
     int insertSelective(ProjectDO record);
+
+    List<ProjectDO> selectByExampleWithRowbounds(ProjectDOExample example, RowBounds rowBounds);
 
     List<ProjectDO> selectByExample(ProjectDOExample example);
 
