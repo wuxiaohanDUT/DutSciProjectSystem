@@ -3,7 +3,6 @@ package com.dut.sci.project.repository;
 import com.dut.sci.project.converter.UserConverter;
 import com.dut.sci.project.domain.UserDO;
 import com.dut.sci.project.domain.UserDOExample;
-import com.dut.sci.project.domain.UserDOWithBLOBs;
 import com.dut.sci.project.dto.UserDTO;
 import com.dut.sci.project.mapper.UserDOMapper;
 import org.apache.ibatis.session.RowBounds;
