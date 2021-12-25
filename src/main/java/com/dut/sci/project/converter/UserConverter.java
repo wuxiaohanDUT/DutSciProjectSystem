@@ -25,14 +25,14 @@ public class UserConverter {
     public static UserDTO convertToDTO(UserDO userDO) {
         UserDTO userDTO = new UserDTO();
         userDTO.setUserId(userDO.getUserId());
-        userDTO.setUserClass(userDTO.getUserClass());
-        userDTO.setUserCollege(userDTO.getUserCollege());
-        userDTO.setUserEmail(userDTO.getUserEmail());
+        userDTO.setUserClass(userDO.getUserClass());
+        userDTO.setUserCollege(userDO.getUserCollege());
+        userDTO.setUserEmail(userDO.getUserEmail());
         userDTO.setUserGender(userDO.getUserGender());
         userDTO.setUserName(userDO.getUserName());
         userDTO.setUserType(userDO.getUserType());
-        userDTO.setUserPassword(userDTO.getUserPassword());
-        userDTO.setUserPhoneNumber(userDTO.getUserPhoneNumber());
+        userDTO.setUserPassword(userDO.getUserPassword());
+        userDTO.setUserPhoneNumber(userDO.getUserPhoneNumber());
         return userDTO;
     }
 

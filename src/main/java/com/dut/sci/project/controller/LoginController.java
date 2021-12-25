@@ -1,12 +1,14 @@
 package com.dut.sci.project.controller;
 
 import com.dut.sci.project.dto.UserDTO;
+import com.dut.sci.project.mapper.UserDOMapper;
 import com.dut.sci.project.request.LoginRequest;
 import com.dut.sci.project.response.LoginResponse;
 import com.dut.sci.project.service.TokenService;
 import com.dut.sci.project.service.UserService;
 import com.dut.sci.project.vo.UserVO;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +24,7 @@ public class LoginController {
     private TokenService tokenService;
 
     @PostMapping("user/login")
-    public LoginResponse Login(@RequestParam LoginRequest loginRequest) {
+    public LoginResponse Login(@RequestBody LoginRequest loginRequest) {
         LoginResponse loginResponse = new LoginResponse();
         UserDTO userDTO = userService.userLogin(loginRequest.getUserId(), loginRequest.getPassword());
         if (null == userDTO) {
