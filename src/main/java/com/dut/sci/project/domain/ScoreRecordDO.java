@@ -3,22 +3,22 @@ package com.dut.sci.project.domain;
 import java.util.Date;
 
 public class ScoreRecordDO {
-    private Integer id;
+    private Integer recordId;
 
     private String userId;
 
-    private Long formId;
+    private Long projectId;
 
     private Integer points;
 
     private Date achieveTime;
 
-    public Integer getId() {
-        return id;
+    public Integer getRecordId() {
+        return recordId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRecordId(Integer recordId) {
+        this.recordId = recordId;
     }
 
     public String getUserId() {
@@ -29,12 +29,12 @@ public class ScoreRecordDO {
         this.userId = userId == null ? null : userId.trim();
     }
 
-    public Long getFormId() {
-        return formId;
+    public Long getProjectId() {
+        return projectId;
     }
 
-    public void setFormId(Long formId) {
-        this.formId = formId;
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     public Integer getPoints() {

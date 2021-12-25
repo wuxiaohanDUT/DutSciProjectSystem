@@ -7,19 +7,11 @@ public class ProjectDO {
 
     private Long projectType;
 
-    private String typeName;
-
     private String participantIds;
-
-    private String participantNames;
-
-    private String instructorNames;
-
-    private String awardType;
 
     private String awardLevel;
 
-    private String instructorIds;
+    private String instructorNames;
 
     private Date achieveTime;
 
@@ -39,44 +31,12 @@ public class ProjectDO {
         this.projectType = projectType;
     }
 
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName == null ? null : typeName.trim();
-    }
-
     public String getParticipantIds() {
         return participantIds;
     }
 
     public void setParticipantIds(String participantIds) {
         this.participantIds = participantIds == null ? null : participantIds.trim();
-    }
-
-    public String getParticipantNames() {
-        return participantNames;
-    }
-
-    public void setParticipantNames(String participantNames) {
-        this.participantNames = participantNames == null ? null : participantNames.trim();
-    }
-
-    public String getInstructorNames() {
-        return instructorNames;
-    }
-
-    public void setInstructorNames(String instructorNames) {
-        this.instructorNames = instructorNames == null ? null : instructorNames.trim();
-    }
-
-    public String getAwardType() {
-        return awardType;
-    }
-
-    public void setAwardType(String awardType) {
-        this.awardType = awardType == null ? null : awardType.trim();
     }
 
     public String getAwardLevel() {
@@ -87,12 +47,12 @@ public class ProjectDO {
         this.awardLevel = awardLevel == null ? null : awardLevel.trim();
     }
 
-    public String getInstructorIds() {
-        return instructorIds;
+    public String getInstructorNames() {
+        return instructorNames;
     }
 
-    public void setInstructorIds(String instructorIds) {
-        this.instructorIds = instructorIds == null ? null : instructorIds.trim();
+    public void setInstructorNames(String instructorNames) {
+        this.instructorNames = instructorNames == null ? null : instructorNames.trim();
     }
 
     public Date getAchieveTime() {

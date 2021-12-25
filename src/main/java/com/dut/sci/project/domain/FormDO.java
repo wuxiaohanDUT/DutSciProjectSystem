@@ -9,21 +9,19 @@ public class FormDO {
 
     private Long reviewerId;
 
-    private String reviewerName;
-
     private Date submitTime;
 
     private Date passTime;
-
-    private String applicantName;
-
-    private String applicantPhoneNumber;
 
     private Long applicantId;
 
     private String contentDescription;
 
     private String imgUrls;
+
+    private Long projectId;
+
+    private Integer formType;
 
     public Long getFormId() {
         return formId;
@@ -49,14 +47,6 @@ public class FormDO {
         this.reviewerId = reviewerId;
     }
 
-    public String getReviewerName() {
-        return reviewerName;
-    }
-
-    public void setReviewerName(String reviewerName) {
-        this.reviewerName = reviewerName == null ? null : reviewerName.trim();
-    }
-
     public Date getSubmitTime() {
         return submitTime;
     }
@@ -71,22 +61,6 @@ public class FormDO {
 
     public void setPassTime(Date passTime) {
         this.passTime = passTime;
-    }
-
-    public String getApplicantName() {
-        return applicantName;
-    }
-
-    public void setApplicantName(String applicantName) {
-        this.applicantName = applicantName == null ? null : applicantName.trim();
-    }
-
-    public String getApplicantPhoneNumber() {
-        return applicantPhoneNumber;
-    }
-
-    public void setApplicantPhoneNumber(String applicantPhoneNumber) {
-        this.applicantPhoneNumber = applicantPhoneNumber == null ? null : applicantPhoneNumber.trim();
     }
 
     public Long getApplicantId() {
@@ -111,5 +85,21 @@ public class FormDO {
 
     public void setImgUrls(String imgUrls) {
         this.imgUrls = imgUrls == null ? null : imgUrls.trim();
+    }
+
+    public Long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
+    }
+
+    public Integer getFormType() {
+        return formType;
+    }
+
+    public void setFormType(Integer formType) {
+        this.formType = formType;
     }
 }

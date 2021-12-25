@@ -285,76 +285,6 @@ public class FormDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andReviewerNameIsNull() {
-            addCriterion("reviewer_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameIsNotNull() {
-            addCriterion("reviewer_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameEqualTo(String value) {
-            addCriterion("reviewer_name =", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameNotEqualTo(String value) {
-            addCriterion("reviewer_name <>", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameGreaterThan(String value) {
-            addCriterion("reviewer_name >", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameGreaterThanOrEqualTo(String value) {
-            addCriterion("reviewer_name >=", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameLessThan(String value) {
-            addCriterion("reviewer_name <", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameLessThanOrEqualTo(String value) {
-            addCriterion("reviewer_name <=", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameLike(String value) {
-            addCriterion("reviewer_name like", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameNotLike(String value) {
-            addCriterion("reviewer_name not like", value, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameIn(List<String> values) {
-            addCriterion("reviewer_name in", values, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameNotIn(List<String> values) {
-            addCriterion("reviewer_name not in", values, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameBetween(String value1, String value2) {
-            addCriterion("reviewer_name between", value1, value2, "reviewerName");
-            return (Criteria) this;
-        }
-
-        public Criteria andReviewerNameNotBetween(String value1, String value2) {
-            addCriterion("reviewer_name not between", value1, value2, "reviewerName");
-            return (Criteria) this;
-        }
-
         public Criteria andSubmitTimeIsNull() {
             addCriterion("submit_time is null");
             return (Criteria) this;
@@ -472,146 +402,6 @@ public class FormDOExample {
 
         public Criteria andPassTimeNotBetween(Date value1, Date value2) {
             addCriterion("pass_time not between", value1, value2, "passTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameIsNull() {
-            addCriterion("applicant_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameIsNotNull() {
-            addCriterion("applicant_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameEqualTo(String value) {
-            addCriterion("applicant_name =", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameNotEqualTo(String value) {
-            addCriterion("applicant_name <>", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameGreaterThan(String value) {
-            addCriterion("applicant_name >", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameGreaterThanOrEqualTo(String value) {
-            addCriterion("applicant_name >=", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameLessThan(String value) {
-            addCriterion("applicant_name <", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameLessThanOrEqualTo(String value) {
-            addCriterion("applicant_name <=", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameLike(String value) {
-            addCriterion("applicant_name like", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameNotLike(String value) {
-            addCriterion("applicant_name not like", value, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameIn(List<String> values) {
-            addCriterion("applicant_name in", values, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameNotIn(List<String> values) {
-            addCriterion("applicant_name not in", values, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameBetween(String value1, String value2) {
-            addCriterion("applicant_name between", value1, value2, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantNameNotBetween(String value1, String value2) {
-            addCriterion("applicant_name not between", value1, value2, "applicantName");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberIsNull() {
-            addCriterion("applicant_phone_number is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberIsNotNull() {
-            addCriterion("applicant_phone_number is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberEqualTo(String value) {
-            addCriterion("applicant_phone_number =", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberNotEqualTo(String value) {
-            addCriterion("applicant_phone_number <>", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberGreaterThan(String value) {
-            addCriterion("applicant_phone_number >", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberGreaterThanOrEqualTo(String value) {
-            addCriterion("applicant_phone_number >=", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberLessThan(String value) {
-            addCriterion("applicant_phone_number <", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberLessThanOrEqualTo(String value) {
-            addCriterion("applicant_phone_number <=", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberLike(String value) {
-            addCriterion("applicant_phone_number like", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberNotLike(String value) {
-            addCriterion("applicant_phone_number not like", value, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberIn(List<String> values) {
-            addCriterion("applicant_phone_number in", values, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberNotIn(List<String> values) {
-            addCriterion("applicant_phone_number not in", values, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberBetween(String value1, String value2) {
-            addCriterion("applicant_phone_number between", value1, value2, "applicantPhoneNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andApplicantPhoneNumberNotBetween(String value1, String value2) {
-            addCriterion("applicant_phone_number not between", value1, value2, "applicantPhoneNumber");
             return (Criteria) this;
         }
 
@@ -812,6 +602,126 @@ public class FormDOExample {
 
         public Criteria andImgUrlsNotBetween(String value1, String value2) {
             addCriterion("img_urls not between", value1, value2, "imgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualTo(Long value) {
+            addCriterion("project_id =", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualTo(Long value) {
+            addCriterion("project_id <>", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThan(Long value) {
+            addCriterion("project_id >", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("project_id >=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThan(Long value) {
+            addCriterion("project_id <", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualTo(Long value) {
+            addCriterion("project_id <=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIn(List<Long> values) {
+            addCriterion("project_id in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotIn(List<Long> values) {
+            addCriterion("project_id not in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdBetween(Long value1, Long value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotBetween(Long value1, Long value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeIsNull() {
+            addCriterion("form_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeIsNotNull() {
+            addCriterion("form_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeEqualTo(Integer value) {
+            addCriterion("form_type =", value, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeNotEqualTo(Integer value) {
+            addCriterion("form_type <>", value, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeGreaterThan(Integer value) {
+            addCriterion("form_type >", value, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("form_type >=", value, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeLessThan(Integer value) {
+            addCriterion("form_type <", value, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("form_type <=", value, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeIn(List<Integer> values) {
+            addCriterion("form_type in", values, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeNotIn(List<Integer> values) {
+            addCriterion("form_type not in", values, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeBetween(Integer value1, Integer value2) {
+            addCriterion("form_type between", value1, value2, "formType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFormTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("form_type not between", value1, value2, "formType");
             return (Criteria) this;
         }
     }

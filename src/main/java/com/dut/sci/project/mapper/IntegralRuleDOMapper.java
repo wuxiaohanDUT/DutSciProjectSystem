@@ -11,7 +11,7 @@ public interface IntegralRuleDOMapper {
 
     int deleteByExample(IntegralRuleDOExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Long ruleId);
 
     int insert(IntegralRuleDO record);
 
@@ -21,7 +21,7 @@ public interface IntegralRuleDOMapper {
 
     List<IntegralRuleDO> selectByExample(IntegralRuleDOExample example);
 
-    IntegralRuleDO selectByPrimaryKey(Long id);
+    IntegralRuleDO selectByPrimaryKey(Long ruleId);
 
     int updateByExampleSelective(@Param("record") IntegralRuleDO record, @Param("example") IntegralRuleDOExample example);
 

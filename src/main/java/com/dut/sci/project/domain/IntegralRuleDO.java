@@ -1,7 +1,7 @@
 package com.dut.sci.project.domain;
 
 public class IntegralRuleDO {
-    private Long id;
+    private Long ruleId;
 
     private Long typeId;
 
@@ -11,12 +11,12 @@ public class IntegralRuleDO {
 
     private Integer points;
 
-    public Long getId() {
-        return id;
+    public Long getRuleId() {
+        return ruleId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRuleId(Long ruleId) {
+        this.ruleId = ruleId;
     }
 
     public Long getTypeId() {

@@ -104,63 +104,63 @@ public class IntegralRuleDOExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andRuleIdIsNull() {
+            addCriterion("rule_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andRuleIdIsNotNull() {
+            addCriterion("rule_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Long value) {
-            addCriterion("id =", value, "id");
+        public Criteria andRuleIdEqualTo(Long value) {
+            addCriterion("rule_id =", value, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Long value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andRuleIdNotEqualTo(Long value) {
+            addCriterion("rule_id <>", value, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Long value) {
-            addCriterion("id >", value, "id");
+        public Criteria andRuleIdGreaterThan(Long value) {
+            addCriterion("rule_id >", value, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andRuleIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("rule_id >=", value, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Long value) {
-            addCriterion("id <", value, "id");
+        public Criteria andRuleIdLessThan(Long value) {
+            addCriterion("rule_id <", value, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Long value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andRuleIdLessThanOrEqualTo(Long value) {
+            addCriterion("rule_id <=", value, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Long> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andRuleIdIn(List<Long> values) {
+            addCriterion("rule_id in", values, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Long> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andRuleIdNotIn(List<Long> values) {
+            addCriterion("rule_id not in", values, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Long value1, Long value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andRuleIdBetween(Long value1, Long value2) {
+            addCriterion("rule_id between", value1, value2, "ruleId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Long value1, Long value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andRuleIdNotBetween(Long value1, Long value2) {
+            addCriterion("rule_id not between", value1, value2, "ruleId");
             return (Criteria) this;
         }
 

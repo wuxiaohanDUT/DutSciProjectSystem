@@ -11,7 +11,7 @@ public interface ScoreRecordDOMapper {
 
     int deleteByExample(ScoreRecordDOExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer recordId);
 
     int insert(ScoreRecordDO record);
 
@@ -21,7 +21,7 @@ public interface ScoreRecordDOMapper {
 
     List<ScoreRecordDO> selectByExample(ScoreRecordDOExample example);
 
-    ScoreRecordDO selectByPrimaryKey(Integer id);
+    ScoreRecordDO selectByPrimaryKey(Integer recordId);
 
     int updateByExampleSelective(@Param("record") ScoreRecordDO record, @Param("example") ScoreRecordDOExample example);
 

@@ -105,63 +105,63 @@ public class ScoreRecordDOExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andRecordIdIsNull() {
+            addCriterion("record_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andRecordIdIsNotNull() {
+            addCriterion("record_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andRecordIdEqualTo(Integer value) {
+            addCriterion("record_id =", value, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andRecordIdNotEqualTo(Integer value) {
+            addCriterion("record_id <>", value, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andRecordIdGreaterThan(Integer value) {
+            addCriterion("record_id >", value, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andRecordIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("record_id >=", value, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andRecordIdLessThan(Integer value) {
+            addCriterion("record_id <", value, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andRecordIdLessThanOrEqualTo(Integer value) {
+            addCriterion("record_id <=", value, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andRecordIdIn(List<Integer> values) {
+            addCriterion("record_id in", values, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andRecordIdNotIn(List<Integer> values) {
+            addCriterion("record_id not in", values, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andRecordIdBetween(Integer value1, Integer value2) {
+            addCriterion("record_id between", value1, value2, "recordId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andRecordIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("record_id not between", value1, value2, "recordId");
             return (Criteria) this;
         }
 
@@ -235,63 +235,63 @@ public class ScoreRecordDOExample {
             return (Criteria) this;
         }
 
-        public Criteria andFormIdIsNull() {
-            addCriterion("form_id is null");
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdIsNotNull() {
-            addCriterion("form_id is not null");
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdEqualTo(Long value) {
-            addCriterion("form_id =", value, "formId");
+        public Criteria andProjectIdEqualTo(Long value) {
+            addCriterion("project_id =", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdNotEqualTo(Long value) {
-            addCriterion("form_id <>", value, "formId");
+        public Criteria andProjectIdNotEqualTo(Long value) {
+            addCriterion("project_id <>", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdGreaterThan(Long value) {
-            addCriterion("form_id >", value, "formId");
+        public Criteria andProjectIdGreaterThan(Long value) {
+            addCriterion("project_id >", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("form_id >=", value, "formId");
+        public Criteria andProjectIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("project_id >=", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdLessThan(Long value) {
-            addCriterion("form_id <", value, "formId");
+        public Criteria andProjectIdLessThan(Long value) {
+            addCriterion("project_id <", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdLessThanOrEqualTo(Long value) {
-            addCriterion("form_id <=", value, "formId");
+        public Criteria andProjectIdLessThanOrEqualTo(Long value) {
+            addCriterion("project_id <=", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdIn(List<Long> values) {
-            addCriterion("form_id in", values, "formId");
+        public Criteria andProjectIdIn(List<Long> values) {
+            addCriterion("project_id in", values, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdNotIn(List<Long> values) {
-            addCriterion("form_id not in", values, "formId");
+        public Criteria andProjectIdNotIn(List<Long> values) {
+            addCriterion("project_id not in", values, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdBetween(Long value1, Long value2) {
-            addCriterion("form_id between", value1, value2, "formId");
+        public Criteria andProjectIdBetween(Long value1, Long value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andFormIdNotBetween(Long value1, Long value2) {
-            addCriterion("form_id not between", value1, value2, "formId");
+        public Criteria andProjectIdNotBetween(Long value1, Long value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
             return (Criteria) this;
         }
 
