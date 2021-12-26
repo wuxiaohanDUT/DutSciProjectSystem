@@ -1,7 +1,7 @@
 package com.dut.sci.project.controller;
 
+import com.dut.sci.project.converter.UserConverter;
 import com.dut.sci.project.dto.UserDTO;
-import com.dut.sci.project.mapper.UserDOMapper;
 import com.dut.sci.project.request.LoginRequest;
 import com.dut.sci.project.response.LoginResponse;
 import com.dut.sci.project.service.TokenService;
@@ -9,7 +9,6 @@ import com.dut.sci.project.service.UserService;
 import com.dut.sci.project.vo.UserVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -29,26 +28,15 @@ public class LoginController {
         UserDTO userDTO = userService.userLogin(loginRequest.getUserId(), loginRequest.getPassword());
         if (null == userDTO) {
             loginResponse.setSuccess(false);
+            loginResponse.setDescription("账号或密码错误");
             return loginResponse;
         }
-        UserVO userVO = userDTO2VO(userDTO);
+        UserVO userVO = UserConverter.UserDTO2VO(userDTO);
+        userVO.setToken(tokenService.generateUserToken(userDTO.getUserId()));
         loginResponse.setData(userVO);
         loginResponse.setSuccess(true);
+        loginResponse.setDescription("登录成功");
         return loginResponse;
     }
 
-    private UserVO userDTO2VO(UserDTO userDTO) {
-        UserVO userVO = new UserVO();
-        userVO.setUserId(userDTO.getUserId());
-        userVO.setUserClass(userDTO.getUserClass());
-        userVO.setUserEmail(userDTO.getUserEmail());
-        userVO.setUserName(userDTO.getUserName());
-        userVO.setUserGender(userDTO.getUserGender());
-        userVO.setUserType(userDTO.getUserType());
-        userVO.setUserCollege(userDTO.getUserCollege());
-        userVO.setUserPhoneNumber(userDTO.getUserPhoneNumber());
-        userVO.setUserType(userDTO.getUserType());
-        userVO.setToken(tokenService.generateUserToken(userDTO.getUserId()));
-        return userVO;
-    }
 }

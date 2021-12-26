@@ -7,6 +7,8 @@ public class UserVO {
 
     private Long userId;
 
+    private String password;
+
     private String userName;
 
     private String token;

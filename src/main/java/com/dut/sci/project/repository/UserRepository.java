@@ -23,7 +23,7 @@ public class UserRepository {
         if (null == userDO) {
             return null;
         }
-        return UserConverter.convertToDTO(userDO);
+        return UserConverter.UserDO2DTO(userDO);
     }
 
     public List<UserDTO> getUserDTOListByIds(List<Long> userIds, Integer limit, Integer offset) {
@@ -39,7 +39,10 @@ public class UserRepository {
     }
 
     public Boolean updateUserInfo(UserDTO userDTO) {
-        UserDO userDO = UserConverter.convertToDO(userDTO);
+        if (null == userDTO) {
+            return false;
+        }
+        UserDO userDO = UserConverter.UserDTO2DO(userDTO);
         return userDOMapper.updateByPrimaryKeySelective(userDO) != 0;
     }
 }
