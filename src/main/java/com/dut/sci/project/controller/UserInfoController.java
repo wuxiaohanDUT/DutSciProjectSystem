@@ -6,6 +6,7 @@ import com.dut.sci.project.request.UpdateUserInfoRequest;
 import com.dut.sci.project.response.ChangePswdResponse;
 import com.dut.sci.project.response.UpdateUserInfoResponse;
 import com.dut.sci.project.service.UserService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class UserInfoController {
     private UserService userService;
 
     @PostMapping("user/updateInfo")
+    @CrossOrigin
     public UpdateUserInfoResponse updateUserInfo(@RequestBody UpdateUserInfoRequest updateUserInfoRequest) {
         UpdateUserInfoResponse response = new UpdateUserInfoResponse();
         if (updateUserInfoRequest.getNewUserEmail() == null &&
@@ -38,6 +40,7 @@ public class UserInfoController {
     }
 
     @PostMapping("user/changePassword")
+    @CrossOrigin
     public ChangePswdResponse changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
         ChangePswdResponse response = new ChangePswdResponse();
         Boolean success = userService.changePassword(changePasswordRequest.getUserId(), changePasswordRequest.getNewPassword());

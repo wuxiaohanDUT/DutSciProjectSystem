@@ -47,7 +47,7 @@
         </javaClientGenerator>
 
         <!-- tableName：数据库中的表名或视图名；domainObjectName：生成的实体类的类名-->
-        <table tableName="score_records" domainObjectName="ScoreRecordDO"
+        <table tableName="project_type" domainObjectName="ProjectTypeDO"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"

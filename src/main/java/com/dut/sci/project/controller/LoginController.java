@@ -7,6 +7,7 @@ import com.dut.sci.project.response.LoginResponse;
 import com.dut.sci.project.service.TokenService;
 import com.dut.sci.project.service.UserService;
 import com.dut.sci.project.vo.UserVO;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ public class LoginController {
     private TokenService tokenService;
 
     @PostMapping("user/login")
+    @CrossOrigin
     public LoginResponse Login(@RequestBody LoginRequest loginRequest) {
         LoginResponse loginResponse = new LoginResponse();
         UserDTO userDTO = userService.userLogin(loginRequest.getUserId(), loginRequest.getPassword());

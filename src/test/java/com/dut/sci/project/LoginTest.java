@@ -6,14 +6,17 @@ import com.dut.sci.project.converter.UserConverter;
 import com.dut.sci.project.domain.UserDO;
 import com.dut.sci.project.dto.UserDTO;
 import com.dut.sci.project.repository.UserRepository;
+import com.dut.sci.project.request.AddTypeRequest;
 import com.dut.sci.project.request.LoginRequest;
 import com.dut.sci.project.request.UpdateUserInfoRequest;
 import com.dut.sci.project.service.UserService;
 import io.jsonwebtoken.lang.Assert;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest
 public class LoginTest {
@@ -44,5 +47,16 @@ public class LoginTest {
         UserDTO userDO = userRepository.getUserDTOById(Long.valueOf(201892244));
         UpdateUserInfoRequest updateUserInfoRequest = new UpdateUserInfoRequest();
         System.out.println(JSON.toJSON(updateUserInfoRequest));
+    }
+
+    @Test void TypeToJason() {
+        AddTypeRequest addTypeRequest = new AddTypeRequest();
+        addTypeRequest.setTypeName("大学生数学竞赛");
+        List<String> list = Lists.newArrayList();
+        list.add("一等奖");
+        list.add("二等奖");
+        list.add("三等奖");
+        addTypeRequest.setAwardLevel(list);
+        System.out.println(JSON.toJSON(addTypeRequest));
     }
 }

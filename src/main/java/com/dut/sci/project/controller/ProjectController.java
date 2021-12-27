@@ -1,7 +1,45 @@
 package com.dut.sci.project.controller;
 
+import com.dut.sci.project.dto.ProjectTypeDTO;
+import com.dut.sci.project.request.AddTypeRequest;
+import com.dut.sci.project.response.CommonResponse;
+import com.dut.sci.project.response.Response;
+import com.dut.sci.project.service.ProjectService;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class ProjectController {
+
+    @Resource
+    private ProjectService projectService;
+
+    @PostMapping("project/getAllType")
+    @CrossOrigin
+    public Response getAllType() {
+        CommonResponse response = new CommonResponse();
+        List<ProjectTypeDTO> typeDTOList = projectService.getAllTypes();
+        if (typeDTOList != null) {
+            response.setSuccess(true);
+        }
+        response.setData(typeDTOList);
+        return response;
+    }
+
+    @PostMapping("project/addType")
+    @CrossOrigin
+    public Response addType(@RequestBody AddTypeRequest addTypeRequest) {
+        CommonResponse response = new CommonResponse();
+        ProjectTypeDTO projectTypeDTO = new ProjectTypeDTO();
+        projectTypeDTO.setTypeName(addTypeRequest.getTypeName());
+        projectTypeDTO.setAwardLevel(addTypeRequest.getAwardLevel());
+        Boolean success = projectService.addProjectType(projectTypeDTO);
+        response.setSuccess(success);
+        return response;
+    }
 }
