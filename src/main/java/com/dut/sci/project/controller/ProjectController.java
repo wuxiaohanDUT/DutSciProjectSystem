@@ -2,6 +2,7 @@ package com.dut.sci.project.controller;
 
 import com.dut.sci.project.dto.ProjectTypeDTO;
 import com.dut.sci.project.request.AddTypeRequest;
+import com.dut.sci.project.request.DeleteTypeRequest;
 import com.dut.sci.project.response.CommonResponse;
 import com.dut.sci.project.response.Response;
 import com.dut.sci.project.service.ProjectService;
@@ -39,6 +40,15 @@ public class ProjectController {
         projectTypeDTO.setTypeName(addTypeRequest.getTypeName());
         projectTypeDTO.setAwardLevel(addTypeRequest.getAwardLevel());
         Boolean success = projectService.addProjectType(projectTypeDTO);
+        response.setSuccess(success);
+        return response;
+    }
+
+    @PostMapping("project/deleteType")
+    @CrossOrigin
+    public Response deleteType(@RequestBody DeleteTypeRequest deleteTypeRequest) {
+        Boolean success = projectService.deleteProjectType(deleteTypeRequest.getTypeId());
+        Response response = new CommonResponse();
         response.setSuccess(success);
         return response;
     }

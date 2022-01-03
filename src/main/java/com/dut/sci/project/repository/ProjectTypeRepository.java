@@ -31,4 +31,7 @@ public class ProjectTypeRepository {
         return projectTypeDOMapper.insert(projectTypeDO) > 0;
     }
 
+    public Boolean deleteProjectType(Long projectTypeId) {
+        return projectTypeDOMapper.deleteByPrimaryKey(projectTypeId) > 0;
+    }
 }

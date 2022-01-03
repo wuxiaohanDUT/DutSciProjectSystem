@@ -20,4 +20,8 @@ public class ProjectService {
     public Boolean addProjectType(ProjectTypeDTO projectTypeDTO) {
         return projectTypeRepository.addProjectType(projectTypeDTO);
     }
+
+    public Boolean deleteProjectType(Long projectTypeId) {
+        return projectTypeRepository.deleteProjectType(projectTypeId);
+    }
 }
