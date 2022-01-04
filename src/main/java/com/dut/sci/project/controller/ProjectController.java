@@ -1,10 +1,14 @@
 package com.dut.sci.project.controller;
 
 import com.dut.sci.project.dto.ProjectTypeDTO;
+import com.dut.sci.project.dto.ShowRuleDTO;
 import com.dut.sci.project.request.AddTypeRequest;
 import com.dut.sci.project.request.DeleteTypeRequest;
+import com.dut.sci.project.request.GetRuleListRequest;
+import com.dut.sci.project.request.UpdateRuleRequest;
 import com.dut.sci.project.response.CommonResponse;
 import com.dut.sci.project.response.Response;
+import com.dut.sci.project.response.TypeRuleResponse;
 import com.dut.sci.project.service.ProjectService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +53,35 @@ public class ProjectController {
     public Response deleteType(@RequestBody DeleteTypeRequest deleteTypeRequest) {
         Boolean success = projectService.deleteProjectType(deleteTypeRequest.getTypeId());
         Response response = new CommonResponse();
+        response.setSuccess(success);
+        return response;
+    }
+
+    @PostMapping("project/getTypeRule")
+    @CrossOrigin
+    public Response getTypeRule() {
+        return null;
+    }
+
+    @PostMapping("project/updateRule")
+    @CrossOrigin
+    public Response updateRule(@RequestBody UpdateRuleRequest updateRuleRequest) {
+        Response response = new CommonResponse();
+        boolean success = projectService.updateRuleById(updateRuleRequest.getTypeId(),
+                                                        updateRuleRequest.getAwardLevel(),
+                                                        updateRuleRequest.getPoints());
+        response.setSuccess(success);
+        return response;
+    }
+
+    @PostMapping("project/getRuleByTypeName")
+    @CrossOrigin
+    public Response getRuleByTypeName(@RequestBody GetRuleListRequest getRuleListRequest) {
+        Response response = new CommonResponse();
+        List<ShowRuleDTO> showRuleDTOS = projectService.getRuleByTypeName(getRuleListRequest.getTypeName(),
+                getRuleListRequest.getPageNum(), getRuleListRequest.getPageSize());
+        boolean success = showRuleDTOS != null && !showRuleDTOS.isEmpty();
+        response.setData(showRuleDTOS);
         response.setSuccess(success);
         return response;
     }

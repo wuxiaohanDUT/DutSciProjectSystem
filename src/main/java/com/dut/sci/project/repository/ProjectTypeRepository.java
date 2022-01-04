@@ -34,4 +34,19 @@ public class ProjectTypeRepository {
     public Boolean deleteProjectType(Long projectTypeId) {
         return projectTypeDOMapper.deleteByPrimaryKey(projectTypeId) > 0;
     }
+
+    public List<ProjectTypeDO> getByTypeName(String typeName) {
+        ProjectTypeDOExample projectTypeDOExample = new ProjectTypeDOExample();
+        ProjectTypeDOExample.Criteria criteria = projectTypeDOExample.createCriteria();
+        criteria.andTypeNameEqualTo(typeName);
+        return projectTypeDOMapper.selectByExample(projectTypeDOExample);
+    }
+
+    public String getTypeNameById(Long typeId) {
+        if (typeId == null) {
+            return null;
+        }
+        ProjectTypeDO projectTypeDO = projectTypeDOMapper.selectByPrimaryKey(typeId);
+        return projectTypeDO.getTypeName();
+    }
 }
