@@ -49,7 +49,7 @@ public class ProjectService {
     }
 
     public List<ShowRuleDTO> getRuleByTypeName(String typeName, Integer pageNum, Integer pageSize) {
-        List<IntegralRuleDTO> integralRuleDTOS = integralRuleRepository.getRuleListByTypeName(typeName, pageNum, pageSize);
+        List<IntegralRuleDTO> integralRuleDTOS = integralRuleRepository.getRuleListByTypeName(typeName, (pageNum - 1) * pageSize + 1, pageSize);
         if (CollectionUtils.isEmpty(integralRuleDTOS)) {
             return null;
         }
