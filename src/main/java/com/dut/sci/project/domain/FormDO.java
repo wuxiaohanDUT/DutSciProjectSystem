@@ -17,8 +17,6 @@ public class FormDO {
 
     private String contentDescription;
 
-    private String imgUrls;
-
     private Long projectId;
 
     private Integer formType;
@@ -77,14 +75,6 @@ public class FormDO {
 
     public void setContentDescription(String contentDescription) {
         this.contentDescription = contentDescription == null ? null : contentDescription.trim();
-    }
-
-    public String getImgUrls() {
-        return imgUrls;
-    }
-
-    public void setImgUrls(String imgUrls) {
-        this.imgUrls = imgUrls == null ? null : imgUrls.trim();
     }
 
     public Long getProjectId() {

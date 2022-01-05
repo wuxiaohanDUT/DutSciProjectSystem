@@ -9,7 +9,6 @@
     <result column="pass_time" jdbcType="TIMESTAMP" property="passTime" />
     <result column="applicant_id" jdbcType="BIGINT" property="applicantId" />
     <result column="content_description" jdbcType="VARCHAR" property="contentDescription" />
-    <result column="img_urls" jdbcType="VARCHAR" property="imgUrls" />
     <result column="project_id" jdbcType="BIGINT" property="projectId" />
     <result column="form_type" jdbcType="INTEGER" property="formType" />
   </resultMap>
@@ -73,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List">
     form_id, form_status, reviewer_id, submit_time, pass_time, applicant_id, content_description, 
-    img_urls, project_id, form_type
+    project_id, form_type
   </sql>
   <select id="selectByExample" parameterType="com.dut.sci.project.domain.FormDOExample" resultMap="BaseResultMap">
     select
@@ -109,12 +108,12 @@
   <insert id="insert" parameterType="com.dut.sci.project.domain.FormDO">
     insert into application_form (form_id, form_status, reviewer_id, 
       submit_time, pass_time, applicant_id, 
-      content_description, img_urls, project_id, 
-      form_type)
+      content_description, project_id, form_type
+      )
     values (#{formId,jdbcType=BIGINT}, #{formStatus,jdbcType=TINYINT}, #{reviewerId,jdbcType=BIGINT}, 
       #{submitTime,jdbcType=TIMESTAMP}, #{passTime,jdbcType=TIMESTAMP}, #{applicantId,jdbcType=BIGINT}, 
-      #{contentDescription,jdbcType=VARCHAR}, #{imgUrls,jdbcType=VARCHAR}, #{projectId,jdbcType=BIGINT}, 
-      #{formType,jdbcType=INTEGER})
+      #{contentDescription,jdbcType=VARCHAR}, #{projectId,jdbcType=BIGINT}, #{formType,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dut.sci.project.domain.FormDO">
     insert into application_form
@@ -139,9 +138,6 @@
       </if>
       <if test="contentDescription != null">
         content_description,
-      </if>
-      <if test="imgUrls != null">
-        img_urls,
       </if>
       <if test="projectId != null">
         project_id,
@@ -171,9 +167,6 @@
       </if>
       <if test="contentDescription != null">
         #{contentDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="imgUrls != null">
-        #{imgUrls,jdbcType=VARCHAR},
       </if>
       <if test="projectId != null">
         #{projectId,jdbcType=BIGINT},
@@ -213,9 +206,6 @@
       <if test="record.contentDescription != null">
         content_description = #{record.contentDescription,jdbcType=VARCHAR},
       </if>
-      <if test="record.imgUrls != null">
-        img_urls = #{record.imgUrls,jdbcType=VARCHAR},
-      </if>
       <if test="record.projectId != null">
         project_id = #{record.projectId,jdbcType=BIGINT},
       </if>
@@ -236,7 +226,6 @@
       pass_time = #{record.passTime,jdbcType=TIMESTAMP},
       applicant_id = #{record.applicantId,jdbcType=BIGINT},
       content_description = #{record.contentDescription,jdbcType=VARCHAR},
-      img_urls = #{record.imgUrls,jdbcType=VARCHAR},
       project_id = #{record.projectId,jdbcType=BIGINT},
       form_type = #{record.formType,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -264,9 +253,6 @@
       <if test="contentDescription != null">
         content_description = #{contentDescription,jdbcType=VARCHAR},
       </if>
-      <if test="imgUrls != null">
-        img_urls = #{imgUrls,jdbcType=VARCHAR},
-      </if>
       <if test="projectId != null">
         project_id = #{projectId,jdbcType=BIGINT},
       </if>
@@ -284,7 +270,6 @@
       pass_time = #{passTime,jdbcType=TIMESTAMP},
       applicant_id = #{applicantId,jdbcType=BIGINT},
       content_description = #{contentDescription,jdbcType=VARCHAR},
-      img_urls = #{imgUrls,jdbcType=VARCHAR},
       project_id = #{projectId,jdbcType=BIGINT},
       form_type = #{formType,jdbcType=INTEGER}
     where form_id = #{formId,jdbcType=BIGINT}
