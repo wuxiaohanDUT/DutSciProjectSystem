@@ -2,6 +2,7 @@ package com.dut.sci.project.converter;
 
 import com.dut.sci.project.domain.PaperDO;
 import com.dut.sci.project.dto.PaperDTO;
+import org.assertj.core.util.Lists;
 import org.springframework.util.CollectionUtils;
 
 import javax.xml.stream.events.DTD;
@@ -45,5 +46,17 @@ public class PaperConverter {
         String[] authorIds = paperDO.getAuthorIds().split("_");
         paperDTO.setAuthorIds(List.of(authorIds));
         return paperDTO;
+    }
+
+    public static List<PaperDTO> paperDOList2DTOList(List<PaperDO> paperDOList) {
+        if (CollectionUtils.isEmpty(paperDOList)) {
+            return null;
+        }
+        List<PaperDTO> paperDTOList = Lists.newArrayList();
+        for (PaperDO paperDO : paperDOList) {
+            PaperDTO paperDTO = paperDO2DTO(paperDO);
+            paperDTOList.add(paperDTO);
+        }
+        return paperDTOList;
     }
 }

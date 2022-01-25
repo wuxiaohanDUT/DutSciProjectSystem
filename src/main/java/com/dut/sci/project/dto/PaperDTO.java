@@ -12,6 +12,8 @@ public class PaperDTO {
 
     private List<String> authorIds;
 
+    private List<String> authorNames;
+
     private String publicationPeriodical;
 
     private String paperName;
