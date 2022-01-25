@@ -12,7 +12,7 @@ public class ProjectDTO {
 
     private Long projectType;
 
-    private List<String> participantIds;
+    private List<Long> participantIds;
 
     private String awardLevel;
 

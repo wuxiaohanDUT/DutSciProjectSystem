@@ -26,10 +26,15 @@ public class FormRepository {
         return formDOMapper.deleteByPrimaryKey(id) > 0;
     }
 
-    public List<FormDTO> getFormsByUserId(Long userId, Integer pageNum, Integer pageSize) {
+    public List<FormDTO> getFormsById(Long applicantId, Long reviewerId, Integer pageNum, Integer pageSize) {
         FormDOExample formDOExample = new FormDOExample();
         FormDOExample.Criteria criteria = formDOExample.createCriteria();
-        criteria.andApplicantIdEqualTo(userId);
+        if (applicantId != null) {
+            criteria.andApplicantIdEqualTo(applicantId);
+        }
+        if (reviewerId != null) {
+            criteria.andReviewerIdEqualTo(reviewerId);
+        }
         List<FormDO> formDOList = formDOMapper.selectByExampleWithRowbounds(formDOExample, new RowBounds(pageNum, pageSize));
         if (CollectionUtils.isEmpty(formDOList)) {
             return null;
@@ -44,6 +49,6 @@ public class FormRepository {
 
     public Boolean updateForm(FormDTO formDTO) {
         FormDO formDO = FormConverter.formDTO2DO(formDTO);
-        return formDOMapper.updateByPrimaryKey(formDO) > 0;
+        return formDOMapper.updateByPrimaryKeySelective(formDO) > 0;
     }
 }

@@ -12,11 +12,15 @@ public class FormDTO {
 
     private Long reviewerId;
 
+    private String reviewerName;
+
     private Date submitTime;
 
     private Date passTime;
 
     private Long applicantId;
+
+    private String applicantName;
 
     private String contentDescription;
 

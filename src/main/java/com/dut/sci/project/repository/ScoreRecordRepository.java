@@ -1,7 +1,45 @@
 package com.dut.sci.project.repository;
 
+import com.dut.sci.project.converter.ScoreRecordConverter;
+import com.dut.sci.project.domain.ScoreRecordDO;
+import com.dut.sci.project.domain.ScoreRecordDOExample;
+import com.dut.sci.project.dto.ScoreRecordDTO;
+import com.dut.sci.project.mapper.ScoreRecordDOMapper;
 import org.springframework.stereotype.Repository;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 @Repository
 public class ScoreRecordRepository {
+
+    @Resource
+    private ScoreRecordDOMapper scoreRecordDOMapper;
+
+    public Boolean addScoreRecord(ScoreRecordDTO scoreRecordDTO) {
+        ScoreRecordDO scoreRecordDO = ScoreRecordConverter.scoreRecordDTO2DO(scoreRecordDTO);
+        return scoreRecordDOMapper.insert(scoreRecordDO) > 0;
+    }
+
+    public Boolean deleteScoreRecordById(Integer id) {
+        return scoreRecordDOMapper.deleteByPrimaryKey(id) > 0;
+    }
+
+    public Boolean deleteScoreRecordByProjectId(Long projectId) {
+        ScoreRecordDOExample scoreRecordDOExample = new ScoreRecordDOExample();
+        ScoreRecordDOExample.Criteria criteria = scoreRecordDOExample.createCriteria();
+        criteria.andProjectIdEqualTo(projectId);
+        return scoreRecordDOMapper.deleteByExample(scoreRecordDOExample) > 0;
+    }
+
+    public List<ScoreRecordDTO> getUserScoreRecord(Long userId, Date begin, Date end) {
+        ScoreRecordDOExample scoreRecordDOExample = new ScoreRecordDOExample();
+        ScoreRecordDOExample.Criteria criteria = scoreRecordDOExample.createCriteria();
+        criteria.andUserIdEqualTo(userId.toString());
+        criteria.andAchieveTimeGreaterThanOrEqualTo(begin);
+        criteria.andAchieveTimeLessThanOrEqualTo(end);
+        List<ScoreRecordDO> scoreRecordDTOList = scoreRecordDOMapper.selectByExample(scoreRecordDOExample);
+        return ScoreRecordConverter.scoreRecordDOList2DTOList(scoreRecordDTOList);
+    }
 }

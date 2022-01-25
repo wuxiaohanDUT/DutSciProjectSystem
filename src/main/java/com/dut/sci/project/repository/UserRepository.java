@@ -26,12 +26,11 @@ public class UserRepository {
         return UserConverter.UserDO2DTO(userDO);
     }
 
-    public List<UserDTO> getUserDTOListByIds(List<Long> userIds, Integer limit, Integer offset) {
+    public List<UserDTO> getUserDTOListByIds(List<Long> userIds) {
         UserDOExample userDOExample = new UserDOExample();
         UserDOExample.Criteria criteria = userDOExample.createCriteria();
         criteria.andUserIdIn(userIds);
-        RowBounds rowBounds = new RowBounds(limit, offset);
-        List<UserDO> userDOList = userDOMapper.selectByExampleWithRowbounds(userDOExample, rowBounds);
+        List<UserDO> userDOList = userDOMapper.selectByExample(userDOExample);
         if (CollectionUtils.isEmpty(userDOList)) {
             return null;
         }

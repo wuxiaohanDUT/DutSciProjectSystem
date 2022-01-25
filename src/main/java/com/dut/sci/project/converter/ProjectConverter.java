@@ -20,8 +20,12 @@ public class ProjectConverter {
         projectDO.setAchieveTime(projectDTO.getAchieveTime());
         projectDO.setInstructorNames(projectDTO.getInstructorNames());
         StringBuilder sb = new StringBuilder();
-        for (String s : projectDTO.getParticipantIds()) {
-            sb.append(s);
+        int len = projectDTO.getParticipantIds().size();
+        for (int i = 0; i < len; ++i) {
+            sb.append(projectDTO.getParticipantIds().get(i));
+            if (i != len - 1) {
+                sb.append("_");
+            }
         }
         projectDO.setParticipantIds(sb.toString());
         return projectDO;
@@ -49,7 +53,10 @@ public class ProjectConverter {
         projectDTO.setAchieveTime(projectDO.getAchieveTime());
         projectDTO.setInstructorNames(projectDO.getInstructorNames());
         String[] arr = projectDO.getParticipantIds().split("_");
-        List<String> list = Lists.newArrayList(arr);
+        List<Long> list = Lists.newArrayList();
+        for (String s : arr) {
+            list.add(Long.valueOf(s));
+        }
         projectDTO.setParticipantIds(list);
         return projectDTO;
     }

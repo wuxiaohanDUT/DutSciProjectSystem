@@ -1,9 +1,9 @@
 package com.dut.sci.project.service;
 
-import com.dut.sci.project.dto.IntegralRuleDTO;
-import com.dut.sci.project.dto.ProjectTypeDTO;
-import com.dut.sci.project.dto.ShowRuleDTO;
+import com.dut.sci.project.dto.*;
+import com.dut.sci.project.repository.FormRepository;
 import com.dut.sci.project.repository.IntegralRuleRepository;
+import com.dut.sci.project.repository.ProjectRepository;
 import com.dut.sci.project.repository.ProjectTypeRepository;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
@@ -20,6 +20,12 @@ public class ProjectService {
 
     @Resource
     private IntegralRuleRepository integralRuleRepository;
+
+    @Resource
+    private FormRepository formRepository;
+
+    @Resource
+    private ProjectRepository projectRepository;
 
     public List<ProjectTypeDTO> getAllTypes() {
         return projectTypeRepository.getAllProjectTypeList();
@@ -63,5 +69,14 @@ public class ProjectService {
             showRuleDTOS.add(showRuleDTO);
         }
         return showRuleDTOS;
+    }
+
+    public ProjectDTO getProjectDetailByFormId(Long formId) {
+        FormDTO formDTO = formRepository.getFormById(formId);
+        if (null == formId) {
+            return null;
+        }
+        ProjectDTO projectDTO = projectRepository.getProjectById(formId);
+        return projectDTO;
     }
 }

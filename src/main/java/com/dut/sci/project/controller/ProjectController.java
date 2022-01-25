@@ -8,7 +8,6 @@ import com.dut.sci.project.request.GetRuleListRequest;
 import com.dut.sci.project.request.UpdateRuleRequest;
 import com.dut.sci.project.response.CommonResponse;
 import com.dut.sci.project.response.Response;
-import com.dut.sci.project.response.TypeRuleResponse;
 import com.dut.sci.project.service.ProjectService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

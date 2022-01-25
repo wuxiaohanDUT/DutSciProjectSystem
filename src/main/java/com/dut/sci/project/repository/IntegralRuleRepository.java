@@ -82,4 +82,15 @@ public class IntegralRuleRepository {
         }
         return RuleConverter.RuleDOList2DTOList(integralRuleDOS);
     }
+
+    public Integer getPointsByIdAndLevel(Long typeId, String level) {
+        IntegralRuleDOExample integralRuleDOExample = new IntegralRuleDOExample();
+        IntegralRuleDOExample.Criteria criteria = integralRuleDOExample.createCriteria();
+        criteria.andTypeIdEqualTo(typeId).andAwardLevelEqualTo(level);
+        List<IntegralRuleDO> integralRuleDTOS = integralRuleDOMapper.selectByExample(integralRuleDOExample);
+        if (CollectionUtils.isEmpty(integralRuleDTOS)) {
+            return 0;
+        }
+        return integralRuleDTOS.get(0).getPoints();
+    }
 }

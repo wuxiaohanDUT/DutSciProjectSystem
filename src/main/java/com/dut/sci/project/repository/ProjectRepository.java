@@ -21,4 +21,13 @@ public class ProjectRepository {
         ProjectDO projectDO = ProjectConverter.projectDTO2DO(projectDTO);
         return projectDOMapper.insert(projectDO) > 0;
     }
+
+    public ProjectDTO getProjectById(Long id) {
+        ProjectDO projectDO = projectDOMapper.selectByPrimaryKey(id);
+        return ProjectConverter.projectDO2DTO(projectDO);
+    }
+
+    public Boolean deleteProjectById(Long id) {
+        return projectDOMapper.deleteByPrimaryKey(id) > 0;
+    }
 }
