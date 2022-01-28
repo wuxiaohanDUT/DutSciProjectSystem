@@ -102,19 +102,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dut.sci.project.domain.ProjectDO">
-    insert into application_project (project_id, project_type, participant_ids, 
-      award_level, instructor_names, achieve_time
-      )
-    values (#{projectId,jdbcType=BIGINT}, #{projectType,jdbcType=BIGINT}, #{participantIds,jdbcType=VARCHAR}, 
-      #{awardLevel,jdbcType=VARCHAR}, #{instructorNames,jdbcType=VARCHAR}, #{achieveTime,jdbcType=TIMESTAMP}
-      )
+    <selectKey keyProperty="projectId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into application_project (project_type, participant_ids, award_level, 
+      instructor_names, achieve_time)
+    values (#{projectType,jdbcType=BIGINT}, #{participantIds,jdbcType=VARCHAR}, #{awardLevel,jdbcType=VARCHAR}, 
+      #{instructorNames,jdbcType=VARCHAR}, #{achieveTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.dut.sci.project.domain.ProjectDO">
+    <selectKey keyProperty="projectId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into application_project
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="projectId != null">
-        project_id,
-      </if>
       <if test="projectType != null">
         project_type,
       </if>
@@ -132,9 +133,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="projectId != null">
-        #{projectId,jdbcType=BIGINT},
-      </if>
       <if test="projectType != null">
         #{projectType,jdbcType=BIGINT},
       </if>

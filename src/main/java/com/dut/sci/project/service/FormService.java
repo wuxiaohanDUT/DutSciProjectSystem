@@ -35,18 +35,23 @@ public class FormService {
     @Resource
     private PaperRepository paperRepository;
 
+    @Resource
+    private ImgRepository imgRepository;
+
     @Transactional
     public Boolean submitProjectForm(FormDTO formDTO, Object projectOrPaperDTO) {
         Date submitTime = new Date(System.currentTimeMillis());
         formDTO.setSubmitTime(submitTime);
         formDTO.setFormStatus(FormStatusEnum.AUDITING.getTypeCode().byteValue());
         Boolean success = true;
-        success &= formRepository.addForm(formDTO);
         if (formDTO.getFormType().equals(FormTypeEnum.PAPER.getTypeCode())){
-            success &= paperRepository.addPaper((PaperDTO) projectOrPaperDTO);
+            Long paperId = paperRepository.addPaper((PaperDTO) projectOrPaperDTO);
+            formDTO.setProjectId(paperId);
         } else if (formDTO.getFormType().equals(FormTypeEnum.PROJECT.getTypeCode())) {
-            success &= projectRepository.addProject((ProjectDTO) projectOrPaperDTO);
+            Long projectId = projectRepository.addProject((ProjectDTO) projectOrPaperDTO);
+            formDTO.setProjectId(projectId);
         }
+        success &= formRepository.addForm(formDTO);
         return success;
     }
 
@@ -66,6 +71,7 @@ public class FormService {
         formDTO.setFormId(formId);
         formDTO.setFormStatus(FormStatusEnum.AUDIT_COMPLETED.getTypeCode().byteValue());
         formDTO.setReviewerId(reviewerId);
+        formDTO.setPassTime(new Date(System.currentTimeMillis()));
         boolean success = true;
         success &= formRepository.updateForm(formDTO);
         formDTO = formRepository.getFormById(formId);
@@ -114,6 +120,7 @@ public class FormService {
             success &= paperRepository.deleteById(paperDTO.getPaperId());
         }
         success &= formRepository.deleteFormById(formId);
+        success &= imgRepository.deleteImgByFormId(formId);
         return success;
     }
 

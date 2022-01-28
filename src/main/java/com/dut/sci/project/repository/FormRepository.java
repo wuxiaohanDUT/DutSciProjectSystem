@@ -4,12 +4,14 @@ import com.dut.sci.project.converter.FormConverter;
 import com.dut.sci.project.domain.FormDO;
 import com.dut.sci.project.domain.FormDOExample;
 import com.dut.sci.project.dto.FormDTO;
+import com.dut.sci.project.enums.FormStatusEnum;
 import com.dut.sci.project.mapper.FormDOMapper;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -51,4 +53,15 @@ public class FormRepository {
         FormDO formDO = FormConverter.formDTO2DO(formDTO);
         return formDOMapper.updateByPrimaryKeySelective(formDO) > 0;
     }
+
+    public List<FormDTO> getSuccessFormsByTime(Date begin, Date end, Byte type) {
+        FormDOExample formDOExample = new FormDOExample();
+        FormDOExample.Criteria criteria = formDOExample.createCriteria();
+        criteria.andPassTimeBetween(begin, end);
+        criteria.andFormStatusEqualTo(FormStatusEnum.AUDIT_COMPLETED.getTypeCode().byteValue());
+        criteria.andFormTypeEqualTo(type.intValue());
+        List<FormDO> formDOList = formDOMapper.selectByExample(formDOExample);
+        return FormConverter.formDOList2DTOList(formDOList);
+    }
+
 }

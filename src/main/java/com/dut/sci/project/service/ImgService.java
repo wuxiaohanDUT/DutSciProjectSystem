@@ -1,0 +1,37 @@
+package com.dut.sci.project.service;
+
+import com.dut.sci.project.domain.ImgDO;
+import com.dut.sci.project.repository.ImgRepository;
+import org.assertj.core.util.Lists;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.Base64;
+import java.util.List;
+
+@Service
+public class ImgService {
+
+    @Resource
+    private ImgRepository imgRepository;
+
+    public Boolean addImgs(List<byte[]> bytes, Long formId) {
+        List<ImgDO> imgDOList = Lists.newArrayList();
+        for (byte[] bts : bytes) {
+            ImgDO imgDO = new ImgDO();
+            imgDO.setBytes(bts);
+            imgDO.setFormId(formId);
+            imgDOList.add(imgDO);
+        }
+        return imgRepository.addImgs(imgDOList);
+    }
+
+    List<String> getImgsByFormId(Long formId) {
+        List<ImgDO> imgDOList = imgRepository.getImgsByFormId(formId);
+        List<String> base64List = Lists.newArrayList();
+        for (ImgDO imgDO : imgDOList) {
+            base64List.add(Base64.getEncoder().encodeToString(imgDO.getBytes()));
+        }
+        return base64List;
+    }
+}

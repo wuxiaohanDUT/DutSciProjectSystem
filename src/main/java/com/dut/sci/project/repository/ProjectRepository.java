@@ -14,12 +14,13 @@ public class ProjectRepository {
     @Resource
     private ProjectDOMapper projectDOMapper;
 
-    public Boolean addProject(ProjectDTO projectDTO) {
+    public Long addProject(ProjectDTO projectDTO) {
         if (projectDTO == null) {
-            return false;
+            return null;
         }
         ProjectDO projectDO = ProjectConverter.projectDTO2DO(projectDTO);
-        return projectDOMapper.insert(projectDO) > 0;
+        projectDOMapper.insert(projectDO);
+        return  projectDO.getProjectId();
     }
 
     public ProjectDTO getProjectById(Long id) {

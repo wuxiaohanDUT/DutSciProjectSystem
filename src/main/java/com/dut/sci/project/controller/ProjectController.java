@@ -1,18 +1,15 @@
 package com.dut.sci.project.controller;
 
+import com.dut.sci.project.dto.PaperDTO;
+import com.dut.sci.project.dto.ProjectDTO;
 import com.dut.sci.project.dto.ProjectTypeDTO;
 import com.dut.sci.project.dto.ShowRuleDTO;
-import com.dut.sci.project.request.AddTypeRequest;
-import com.dut.sci.project.request.DeleteTypeRequest;
-import com.dut.sci.project.request.GetRuleListRequest;
-import com.dut.sci.project.request.UpdateRuleRequest;
+import com.dut.sci.project.request.*;
 import com.dut.sci.project.response.CommonResponse;
 import com.dut.sci.project.response.Response;
+import com.dut.sci.project.service.PaperService;
 import com.dut.sci.project.service.ProjectService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +19,9 @@ public class ProjectController {
 
     @Resource
     private ProjectService projectService;
+
+    @Resource
+    private PaperService paperService;
 
     @PostMapping("project/getAllType")
     @CrossOrigin
@@ -83,5 +83,21 @@ public class ProjectController {
         response.setData(showRuleDTOS);
         response.setSuccess(success);
         return response;
+    }
+
+    @GetMapping("project/getProjectDetail")
+    public Response getProjectDetail(@RequestBody GetProjectRequest getProjectRequest) {
+        CommonResponse commonResponse = new CommonResponse();
+        ProjectDTO projectDTO = projectService.getProjectDetailByFormId(getProjectRequest.getFormId());
+        commonResponse.setData(projectDTO);
+        return commonResponse;
+    }
+
+    @GetMapping("project/getPaperDetail")
+    public Response getPaperDetail(@RequestBody GetProjectRequest getProjectRequest) {
+        CommonResponse commonResponse = new CommonResponse();
+        PaperDTO paperDTO = paperService.getPaperDetailByFormId(getProjectRequest.getFormId());
+        commonResponse.setData(paperDTO);
+        return commonResponse;
     }
 }

@@ -3,12 +3,13 @@ package com.dut.sci.project;
 import com.alibaba.fastjson.JSON;
 import com.dut.sci.project.controller.LoginController;
 import com.dut.sci.project.converter.UserConverter;
+import com.dut.sci.project.domain.ProjectDO;
 import com.dut.sci.project.domain.UserDO;
 import com.dut.sci.project.dto.UserDTO;
+import com.dut.sci.project.mapper.ProjectDOMapper;
+import com.dut.sci.project.mapper.UserDOMapper;
 import com.dut.sci.project.repository.UserRepository;
-import com.dut.sci.project.request.AddTypeRequest;
-import com.dut.sci.project.request.LoginRequest;
-import com.dut.sci.project.request.UpdateUserInfoRequest;
+import com.dut.sci.project.request.*;
 import com.dut.sci.project.service.UserService;
 import io.jsonwebtoken.lang.Assert;
 import org.assertj.core.util.Lists;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -29,6 +31,12 @@ public class LoginTest {
 
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private UserDOMapper userDOMapper;
+
+    @Resource
+    private ProjectDOMapper projectDOMapper;
 
     @Test
     public void TestUserService() {
@@ -58,5 +66,20 @@ public class LoginTest {
         list.add("三等奖");
         addTypeRequest.setAwardLevel(list);
         System.out.println(JSON.toJSON(addTypeRequest));
+    }
+
+    @Test
+    public void test() {
+        AddPaperRequet addPaperRequet = new AddPaperRequet();
+        addPaperRequet.setPaperName("论文题目");
+        addPaperRequet.setCollection("ccf");
+        addPaperRequet.setApplicantId(Long.valueOf(201892244));
+        List<String> list = Lists.newArrayList();
+        list.add("201892244");
+        addPaperRequet.setParticipantIds(list);
+        addPaperRequet.setContentDescription("描述");
+        addPaperRequet.setPublicationPeriodical("123");
+        addPaperRequet.setPublicationTime(new Date());
+        System.out.println(JSON.toJSON(addPaperRequet));
     }
 }

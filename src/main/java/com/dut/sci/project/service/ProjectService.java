@@ -71,12 +71,16 @@ public class ProjectService {
         return showRuleDTOS;
     }
 
+    public Long addProject(ProjectDTO projectDTO) {
+        return projectRepository.addProject(projectDTO);
+    }
+
     public ProjectDTO getProjectDetailByFormId(Long formId) {
         FormDTO formDTO = formRepository.getFormById(formId);
         if (null == formId) {
             return null;
         }
-        ProjectDTO projectDTO = projectRepository.getProjectById(formId);
+        ProjectDTO projectDTO = projectRepository.getProjectById(formDTO.getProjectId());
         return projectDTO;
     }
 }

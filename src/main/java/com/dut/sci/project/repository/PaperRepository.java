@@ -17,12 +17,13 @@ public class PaperRepository {
     @Resource
     private PaperDOMapper paperDOMapper;
 
-    public Boolean addPaper(PaperDTO paperDTO) {
+    public Long addPaper(PaperDTO paperDTO) {
         if (paperDTO == null) {
-            return false;
+            return null;
         }
         PaperDO paperDO = PaperConverter.paperDTO2DO(paperDTO);
-        return paperDOMapper.insert(paperDO) > 0;
+        paperDOMapper.insert(paperDO);
+        return paperDO.getPaperId();
     }
 
     public PaperDTO getPaperById(Long id) {

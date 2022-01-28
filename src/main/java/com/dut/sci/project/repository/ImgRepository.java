@@ -36,4 +36,11 @@ public class ImgRepository {
         }
         return imgDOList;
     }
+
+    public Boolean deleteImgByFormId(Long formId) {
+        ImgDOExample example = new ImgDOExample();
+        ImgDOExample.Criteria criteria = example.createCriteria();
+        criteria.andFormIdEqualTo(formId);
+        return imgDOMapper.deleteByExample(example) >= 0;
+    }
 }

@@ -36,9 +36,15 @@ public class ScoreRecordRepository {
     public List<ScoreRecordDTO> getUserScoreRecord(Long userId, Date begin, Date end) {
         ScoreRecordDOExample scoreRecordDOExample = new ScoreRecordDOExample();
         ScoreRecordDOExample.Criteria criteria = scoreRecordDOExample.createCriteria();
-        criteria.andUserIdEqualTo(userId.toString());
-        criteria.andAchieveTimeGreaterThanOrEqualTo(begin);
-        criteria.andAchieveTimeLessThanOrEqualTo(end);
+        if (userId != null) {
+            criteria.andUserIdEqualTo(userId.toString());
+        }
+        if (begin != null) {
+            criteria.andAchieveTimeGreaterThanOrEqualTo(begin);
+        }
+        if (end != null) {
+            criteria.andAchieveTimeLessThanOrEqualTo(end);
+        }
         List<ScoreRecordDO> scoreRecordDTOList = scoreRecordDOMapper.selectByExample(scoreRecordDOExample);
         return ScoreRecordConverter.scoreRecordDOList2DTOList(scoreRecordDTOList);
     }

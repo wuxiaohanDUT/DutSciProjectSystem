@@ -106,21 +106,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dut.sci.project.domain.FormDO">
-    insert into application_form (form_id, form_status, reviewer_id, 
-      submit_time, pass_time, applicant_id, 
-      content_description, project_id, form_type
-      )
-    values (#{formId,jdbcType=BIGINT}, #{formStatus,jdbcType=TINYINT}, #{reviewerId,jdbcType=BIGINT}, 
-      #{submitTime,jdbcType=TIMESTAMP}, #{passTime,jdbcType=TIMESTAMP}, #{applicantId,jdbcType=BIGINT}, 
-      #{contentDescription,jdbcType=VARCHAR}, #{projectId,jdbcType=BIGINT}, #{formType,jdbcType=INTEGER}
-      )
+    <selectKey keyProperty="formId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into application_form (form_status, reviewer_id, submit_time, 
+      pass_time, applicant_id, content_description, 
+      project_id, form_type)
+    values (#{formStatus,jdbcType=TINYINT}, #{reviewerId,jdbcType=BIGINT}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{passTime,jdbcType=TIMESTAMP}, #{applicantId,jdbcType=BIGINT}, #{contentDescription,jdbcType=VARCHAR}, 
+      #{projectId,jdbcType=BIGINT}, #{formType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.dut.sci.project.domain.FormDO">
+    <selectKey keyProperty="formId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into application_form
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="formId != null">
-        form_id,
-      </if>
       <if test="formStatus != null">
         form_status,
       </if>
@@ -147,9 +148,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="formId != null">
-        #{formId,jdbcType=BIGINT},
-      </if>
       <if test="formStatus != null">
         #{formStatus,jdbcType=TINYINT},
       </if>

@@ -102,19 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dut.sci.project.domain.PaperDO">
-    insert into application_paper (paper_id, author_ids, publication_periodical, 
+    <selectKey keyProperty="paperId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into application_paper (author_ids, publication_periodical, 
       paper_name, collection, publication_time
       )
-    values (#{paperId,jdbcType=BIGINT}, #{authorIds,jdbcType=VARCHAR}, #{publicationPeriodical,jdbcType=VARCHAR}, 
+    values (#{authorIds,jdbcType=VARCHAR}, #{publicationPeriodical,jdbcType=VARCHAR}, 
       #{paperName,jdbcType=VARCHAR}, #{collection,jdbcType=VARCHAR}, #{publicationTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.dut.sci.project.domain.PaperDO">
+    <selectKey keyProperty="paperId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into application_paper
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="paperId != null">
-        paper_id,
-      </if>
       <if test="authorIds != null">
         author_ids,
       </if>
@@ -132,9 +135,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="paperId != null">
-        #{paperId,jdbcType=BIGINT},
-      </if>
       <if test="authorIds != null">
         #{authorIds,jdbcType=VARCHAR},
       </if>
