@@ -8,6 +8,7 @@ import com.dut.sci.project.repository.ScoreRecordRepository;
 import com.dut.sci.project.repository.UserRepository;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -26,8 +27,13 @@ public class ScoreService {
         return scoreRecordRepository.getUserScoreRecord(userId, beginTime, endTIme);
     }
 
-    public List<UserPointsDTO> getUserPoints(Date begin, Date end) {
-        List<ScoreRecordDTO> scoreRecordDTOList = scoreRecordRepository.getUserScoreRecord(null, begin, end);
+    public List<UserPointsDTO> getUserPoints(Date begin, Date end, Integer year, String college) {
+        List<UserDTO> userDTOList1 = userRepository.getUserByCollegeAadYear(college, year);
+        if (CollectionUtils.isEmpty(userDTOList1)) {
+            return null;
+        }
+        List<String> userIds1 = userDTOList1.stream().map(e -> e.getUserId().toString()).collect(Collectors.toList());
+        List<ScoreRecordDTO> scoreRecordDTOList = scoreRecordRepository.getUserScoreRecords(userIds1, begin, end);
         Map<Long, Integer> id2Points = new HashMap<>();
         for (ScoreRecordDTO scoreRecordDTO : scoreRecordDTOList) {
             Long userId = Long.valueOf(scoreRecordDTO.getUserId());

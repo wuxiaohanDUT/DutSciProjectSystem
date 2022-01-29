@@ -4,6 +4,7 @@ import com.dut.sci.project.dto.UserDTO;
 import com.dut.sci.project.request.ChangePasswordRequest;
 import com.dut.sci.project.request.UpdateUserInfoRequest;
 import com.dut.sci.project.response.ChangePswdResponse;
+import com.dut.sci.project.response.CommonResponse;
 import com.dut.sci.project.response.UpdateUserInfoResponse;
 import com.dut.sci.project.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,5 +47,15 @@ public class UserInfoController {
         Boolean success = userService.changePassword(changePasswordRequest.getUserId(), changePasswordRequest.getNewPassword());
         response.setSuccess(success);
         return response;
+    }
+
+    @PostMapping("user/getUserInfo")
+    @CrossOrigin
+    public CommonResponse getUserInfo(@RequestBody UpdateUserInfoRequest getUserInfoRequest) {
+        CommonResponse commonResponse = new CommonResponse();
+        UserDTO userDTO = userService.getUserInfoById(getUserInfoRequest.getUserId());
+        commonResponse.setData(userDTO);
+        commonResponse.setSuccess(true);
+        return commonResponse;
     }
 }

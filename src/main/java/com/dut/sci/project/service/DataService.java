@@ -7,6 +7,7 @@ import com.dut.sci.project.repository.FormRepository;
 import com.dut.sci.project.repository.UserRepository;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -21,8 +22,11 @@ public class DataService {
     @Resource
     private UserRepository userRepository;
 
-    List<CollegeFormDTO> getCollegeFormNums(Date begin, Date end, Byte type) {
+    public List<CollegeFormDTO> getCollegeFormNums(Date begin, Date end, Byte type) {
         List<FormDTO> formDTOList = formRepository.getSuccessFormsByTime(begin, end, type);
+        if (CollectionUtils.isEmpty(formDTOList)) {
+            return null;
+        }
         Set<Long> applicantIdSet = formDTOList.stream().map(e -> e.getApplicantId()).collect(Collectors.toSet());
         List<Long> applicantIds = applicantIdSet.stream().collect(Collectors.toList());
         List<UserDTO> userDTOList = userRepository.getUserDTOListByIds(applicantIds);
@@ -46,4 +50,5 @@ public class DataService {
         }
         return collegeFormDTOList;
     }
+
 }

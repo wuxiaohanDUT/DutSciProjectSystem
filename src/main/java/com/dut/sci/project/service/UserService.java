@@ -33,4 +33,10 @@ public class UserService {
     public Boolean userInfoUpdate(UserDTO userDTO) {
         return userRepository.updateUserInfo(userDTO);
     }
+
+    public UserDTO getUserInfoById(Long userId) {
+        UserDTO userDTO = userRepository.getUserDTOById(userId);
+        userDTO.setUserPassword(null);
+        return userDTO;
+    }
 }

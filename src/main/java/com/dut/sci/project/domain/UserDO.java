@@ -19,6 +19,8 @@ public class UserDO {
 
     private Integer userType;
 
+    private Integer userYear;
+
     public Long getUserId() {
         return userId;
     }
@@ -89,5 +91,13 @@ public class UserDO {
 
     public void setUserType(Integer userType) {
         this.userType = userType;
+    }
+
+    public Integer getUserYear() {
+        return userYear;
+    }
+
+    public void setUserYear(Integer userYear) {
+        this.userYear = userYear;
     }
 }

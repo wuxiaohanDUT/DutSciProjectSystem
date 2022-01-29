@@ -48,4 +48,20 @@ public class ScoreRecordRepository {
         List<ScoreRecordDO> scoreRecordDTOList = scoreRecordDOMapper.selectByExample(scoreRecordDOExample);
         return ScoreRecordConverter.scoreRecordDOList2DTOList(scoreRecordDTOList);
     }
+
+    public List<ScoreRecordDTO> getUserScoreRecords(List<String> userIds, Date begin, Date end) {
+        ScoreRecordDOExample scoreRecordDOExample = new ScoreRecordDOExample();
+        ScoreRecordDOExample.Criteria criteria = scoreRecordDOExample.createCriteria();
+        if (userIds != null) {
+            criteria.andUserIdIn(userIds);
+        }
+        if (begin != null) {
+            criteria.andAchieveTimeGreaterThanOrEqualTo(begin);
+        }
+        if (end != null) {
+            criteria.andAchieveTimeLessThanOrEqualTo(end);
+        }
+        List<ScoreRecordDO> scoreRecordDTOList = scoreRecordDOMapper.selectByExample(scoreRecordDOExample);
+        return ScoreRecordConverter.scoreRecordDOList2DTOList(scoreRecordDTOList);
+    }
 }

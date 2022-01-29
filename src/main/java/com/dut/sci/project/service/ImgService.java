@@ -26,7 +26,7 @@ public class ImgService {
         return imgRepository.addImgs(imgDOList);
     }
 
-    List<String> getImgsByFormId(Long formId) {
+    public List<String> getImgsByFormId(Long formId) {
         List<ImgDO> imgDOList = imgRepository.getImgsByFormId(formId);
         List<String> base64List = Lists.newArrayList();
         for (ImgDO imgDO : imgDOList) {

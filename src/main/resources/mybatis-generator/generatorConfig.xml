@@ -47,13 +47,13 @@
         </javaClientGenerator>
 
         <!-- tableName：数据库中的表名或视图名；domainObjectName：生成的实体类的类名-->
-        <table tableName="form_img" domainObjectName="ImgDO"
+        <table tableName="sys_user" domainObjectName="UserDO"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"
                selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <generatedKey column="user_id" sqlStatement="Mysql" identity="true"/>
         </table>
 
     </context>

@@ -6,6 +6,7 @@ import com.dut.sci.project.dto.ProjectDTO;
 import com.dut.sci.project.enums.FormTypeEnum;
 import com.dut.sci.project.request.AddFormRequest;
 import com.dut.sci.project.request.AddPaperRequet;
+import com.dut.sci.project.request.GetFormListRequest;
 import com.dut.sci.project.request.RejectFormRequest;
 import com.dut.sci.project.response.CommonResponse;
 import com.dut.sci.project.service.FormService;
@@ -13,10 +14,7 @@ import com.dut.sci.project.service.ImgService;
 import com.dut.sci.project.service.ProjectService;
 import org.assertj.core.util.Lists;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -36,6 +34,7 @@ public class FormController {
     private ImgService imgService;
 
     @PostMapping("form/addProjectForm")
+    @CrossOrigin
     public CommonResponse addProjectForm(@RequestBody AddFormRequest addFormRequest){
         CommonResponse commonResponse = new CommonResponse();
         ProjectDTO projectDTO = new ProjectDTO();
@@ -54,6 +53,7 @@ public class FormController {
     }
 
     @PostMapping("form/addPaperForm")
+    @CrossOrigin
     public CommonResponse addPaperForm(@RequestBody AddPaperRequet addPaperRequet) {
         CommonResponse commonResponse = new CommonResponse();
         PaperDTO paperDTO = new PaperDTO();
@@ -73,6 +73,7 @@ public class FormController {
     }
 
     @PostMapping("form/rejectForm")
+    @CrossOrigin
     public CommonResponse rejectForm(@RequestBody RejectFormRequest rejectFormRequest) {
         CommonResponse commonResponse = new CommonResponse();
         boolean success = formService.rejectForm(rejectFormRequest.getFormId(), rejectFormRequest.getUserId());
@@ -81,7 +82,8 @@ public class FormController {
     }
 
     @PostMapping("form/agreeForm")
-    public CommonResponse aggreeForm(@RequestBody RejectFormRequest agreeFormRequest) {
+    @CrossOrigin
+    public CommonResponse agreeForm(@RequestBody RejectFormRequest agreeFormRequest) {
         CommonResponse commonResponse = new CommonResponse();
         boolean success = formService.agreeForm(agreeFormRequest.getFormId(), agreeFormRequest.getUserId());
         commonResponse.setSuccess(success);
@@ -89,10 +91,34 @@ public class FormController {
     }
 
     @PostMapping("form/deleteForm")
+    @CrossOrigin
     public CommonResponse deleteForm(@RequestBody RejectFormRequest deleteFormRequest) {
         CommonResponse commonResponse = new CommonResponse();
         boolean success = formService.deleteForm(deleteFormRequest.getFormId());
         commonResponse.setSuccess(success);
+        return commonResponse;
+    }
+
+    @PostMapping("form/getFormList")
+    @CrossOrigin
+    public CommonResponse getFormList(@RequestBody GetFormListRequest getFormListRequest) {
+        CommonResponse commonResponse = new CommonResponse();
+        List<FormDTO> formDTOList = formService.getForms(getFormListRequest.getApplicantId(),
+                getFormListRequest.getReviewerId(),
+                getFormListRequest.getPageNum(),
+                getFormListRequest.getPageSize());
+        commonResponse.setSuccess(true);
+        commonResponse.setData(formDTOList);
+        return commonResponse;
+    }
+
+    @PostMapping("form/getFormImg")
+    @CrossOrigin
+    public CommonResponse getFormImg(@RequestBody RejectFormRequest getFormImgRequest) {
+        CommonResponse commonResponse = new CommonResponse();
+        List<String> imgList = imgService.getImgsByFormId(getFormImgRequest.getFormId());
+        commonResponse.setSuccess(true);
+        commonResponse.setData(imgList);
         return commonResponse;
     }
 }

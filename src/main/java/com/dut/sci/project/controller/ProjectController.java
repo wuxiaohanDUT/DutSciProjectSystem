@@ -86,6 +86,7 @@ public class ProjectController {
     }
 
     @GetMapping("project/getProjectDetail")
+    @CrossOrigin
     public Response getProjectDetail(@RequestBody GetProjectRequest getProjectRequest) {
         CommonResponse commonResponse = new CommonResponse();
         ProjectDTO projectDTO = projectService.getProjectDetailByFormId(getProjectRequest.getFormId());
@@ -94,6 +95,7 @@ public class ProjectController {
     }
 
     @GetMapping("project/getPaperDetail")
+    @CrossOrigin
     public Response getPaperDetail(@RequestBody GetProjectRequest getProjectRequest) {
         CommonResponse commonResponse = new CommonResponse();
         PaperDTO paperDTO = paperService.getPaperDetailByFormId(getProjectRequest.getFormId());

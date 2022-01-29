@@ -44,4 +44,17 @@ public class UserRepository {
         UserDO userDO = UserConverter.UserDTO2DO(userDTO);
         return userDOMapper.updateByPrimaryKeySelective(userDO) != 0;
     }
+
+    public List<UserDTO> getUserByCollegeAadYear(String college, Integer year) {
+        UserDOExample userDOExample = new UserDOExample();
+        UserDOExample.Criteria criteria = userDOExample.createCriteria();
+        if (null != college) {
+            criteria.andUserCollegeEqualTo(college);
+        }
+        if (null != year) {
+            criteria.andUserYearEqualTo(year);
+        }
+        List<UserDO> userDOList = userDOMapper.selectByExample(userDOExample);
+        return UserConverter.convertToDTOList(userDOList);
+    }
 }

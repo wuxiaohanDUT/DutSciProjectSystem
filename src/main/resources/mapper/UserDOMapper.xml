@@ -11,6 +11,7 @@
     <result column="user_college" jdbcType="VARCHAR" property="userCollege" />
     <result column="user_class" jdbcType="VARCHAR" property="userClass" />
     <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="user_year" jdbcType="INTEGER" property="userYear" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     user_id, user_password, user_name, user_phone_number, user_email, user_gender, user_college, 
-    user_class, user_type
+    user_class, user_type, user_year
   </sql>
   <select id="selectByExample" parameterType="com.dut.sci.project.domain.UserDOExample" resultMap="BaseResultMap">
     select
@@ -111,10 +112,12 @@
     </selectKey>
     insert into sys_user (user_password, user_name, user_phone_number, 
       user_email, user_gender, user_college, 
-      user_class, user_type)
+      user_class, user_type, user_year
+      )
     values (#{userPassword,jdbcType=CHAR}, #{userName,jdbcType=VARCHAR}, #{userPhoneNumber,jdbcType=VARCHAR}, 
       #{userEmail,jdbcType=VARCHAR}, #{userGender,jdbcType=BIT}, #{userCollege,jdbcType=VARCHAR}, 
-      #{userClass,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER})
+      #{userClass,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{userYear,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dut.sci.project.domain.UserDO">
     <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Long">
@@ -146,6 +149,9 @@
       <if test="userType != null">
         user_type,
       </if>
+      <if test="userYear != null">
+        user_year,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userPassword != null">
@@ -171,6 +177,9 @@
       </if>
       <if test="userType != null">
         #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userYear != null">
+        #{userYear,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -210,6 +219,9 @@
       <if test="record.userType != null">
         user_type = #{record.userType,jdbcType=INTEGER},
       </if>
+      <if test="record.userYear != null">
+        user_year = #{record.userYear,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -225,7 +237,8 @@
       user_gender = #{record.userGender,jdbcType=BIT},
       user_college = #{record.userCollege,jdbcType=VARCHAR},
       user_class = #{record.userClass,jdbcType=VARCHAR},
-      user_type = #{record.userType,jdbcType=INTEGER}
+      user_type = #{record.userType,jdbcType=INTEGER},
+      user_year = #{record.userYear,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,6 +270,9 @@
       <if test="userType != null">
         user_type = #{userType,jdbcType=INTEGER},
       </if>
+      <if test="userYear != null">
+        user_year = #{userYear,jdbcType=INTEGER},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
@@ -269,7 +285,8 @@
       user_gender = #{userGender,jdbcType=BIT},
       user_college = #{userCollege,jdbcType=VARCHAR},
       user_class = #{userClass,jdbcType=VARCHAR},
-      user_type = #{userType,jdbcType=INTEGER}
+      user_type = #{userType,jdbcType=INTEGER},
+      user_year = #{userYear,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="com.dut.sci.project.domain.UserDOExample" resultMap="BaseResultMap">

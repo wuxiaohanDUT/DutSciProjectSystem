@@ -703,6 +703,66 @@ public class UserDOExample {
             addCriterion("user_type not between", value1, value2, "userType");
             return (Criteria) this;
         }
+
+        public Criteria andUserYearIsNull() {
+            addCriterion("user_year is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearIsNotNull() {
+            addCriterion("user_year is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearEqualTo(Integer value) {
+            addCriterion("user_year =", value, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearNotEqualTo(Integer value) {
+            addCriterion("user_year <>", value, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearGreaterThan(Integer value) {
+            addCriterion("user_year >", value, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_year >=", value, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearLessThan(Integer value) {
+            addCriterion("user_year <", value, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearLessThanOrEqualTo(Integer value) {
+            addCriterion("user_year <=", value, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearIn(List<Integer> values) {
+            addCriterion("user_year in", values, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearNotIn(List<Integer> values) {
+            addCriterion("user_year not in", values, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearBetween(Integer value1, Integer value2) {
+            addCriterion("user_year between", value1, value2, "userYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserYearNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_year not between", value1, value2, "userYear");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

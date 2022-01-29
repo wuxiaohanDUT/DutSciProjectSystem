@@ -7,6 +7,7 @@ import com.dut.sci.project.repository.*;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -126,6 +127,9 @@ public class FormService {
 
     public List<FormDTO> getForms(Long applicantId, Long reviewerId, Integer pageNum, Integer pageSize) {
         List<FormDTO> formDTOList = formRepository.getFormsById(applicantId, reviewerId, (pageNum - 1) * pageSize, pageSize);
+        if (CollectionUtils.isEmpty(formDTOList)) {
+            return null;
+        }
         List<Long> userIds = Lists.newArrayList();
         for (FormDTO formDTO : formDTOList) {
             userIds.add(formDTO.getReviewerId());
