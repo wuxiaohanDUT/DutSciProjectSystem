@@ -10,5 +10,6 @@ public class GetCollegeFormNumsRequest extends Request{
     private Date begin;
     private Date end;
     private Byte type;
+    private String college;
 
 }

@@ -19,6 +19,11 @@ public class ScoreController {
     @Resource
     private ScoreService scoreService;
 
+    /**
+     * 获取一个用户在一个事件段内所有的得分记录
+     * @param request
+     * @return
+     */
     @PostMapping("score/getUserScoreRecords")
     @CrossOrigin
     public CommonResponse getUserScoreRecords(@RequestBody GetUserScoreRecordsRequest request) {
@@ -29,6 +34,11 @@ public class ScoreController {
         return commonResponse;
     }
 
+    /**
+     * 获取一个时间段内所有用户的积分数，可以根据年级、学院进行筛选
+     * @param request
+     * @return
+     */
     @PostMapping("score/getUserPoints")
     @CrossOrigin
     public CommonResponse getUserPoints(@RequestBody GetUserScoreRecordsRequest request) {

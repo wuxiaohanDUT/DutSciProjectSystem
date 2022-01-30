@@ -23,6 +23,10 @@ public class ProjectController {
     @Resource
     private PaperService paperService;
 
+    /**
+     * 获取所有科创项目的类型
+     * @return
+     */
     @PostMapping("project/getAllType")
     @CrossOrigin
     public Response getAllType() {
@@ -35,6 +39,11 @@ public class ProjectController {
         return response;
     }
 
+    /**
+     * 增加一种科创项目类型
+     * @param addTypeRequest
+     * @return
+     */
     @PostMapping("project/addType")
     @CrossOrigin
     public Response addType(@RequestBody AddTypeRequest addTypeRequest) {
@@ -47,6 +56,11 @@ public class ProjectController {
         return response;
     }
 
+    /**
+     * 删除一种科创项目类型
+     * @param deleteTypeRequest
+     * @return
+     */
     @PostMapping("project/deleteType")
     @CrossOrigin
     public Response deleteType(@RequestBody DeleteTypeRequest deleteTypeRequest) {
@@ -62,6 +76,11 @@ public class ProjectController {
         return null;
     }
 
+    /**
+     * 跟新一条积分规则
+     * @param updateRuleRequest
+     * @return
+     */
     @PostMapping("project/updateRule")
     @CrossOrigin
     public Response updateRule(@RequestBody UpdateRuleRequest updateRuleRequest) {
@@ -73,6 +92,11 @@ public class ProjectController {
         return response;
     }
 
+    /**
+     * 根据项目类型名称获取积分规则
+     * @param getRuleListRequest
+     * @return
+     */
     @PostMapping("project/getRuleByTypeName")
     @CrossOrigin
     public Response getRuleByTypeName(@RequestBody GetRuleListRequest getRuleListRequest) {
@@ -85,6 +109,11 @@ public class ProjectController {
         return response;
     }
 
+    /**
+     * 根据工单Id查看项目详情信息
+     * @param getProjectRequest
+     * @return
+     */
     @GetMapping("project/getProjectDetail")
     @CrossOrigin
     public Response getProjectDetail(@RequestBody GetProjectRequest getProjectRequest) {
@@ -94,12 +123,32 @@ public class ProjectController {
         return commonResponse;
     }
 
+    /**
+     * 根据工单Id查看论文详情信息
+     * @param getProjectRequest
+     * @return
+     */
     @GetMapping("project/getPaperDetail")
     @CrossOrigin
     public Response getPaperDetail(@RequestBody GetProjectRequest getProjectRequest) {
         CommonResponse commonResponse = new CommonResponse();
         PaperDTO paperDTO = paperService.getPaperDetailByFormId(getProjectRequest.getFormId());
         commonResponse.setData(paperDTO);
+        return commonResponse;
+    }
+
+    /**
+     * 获取一个用户发表的论文
+     * @param request
+     * @return
+     */
+    @PostMapping("project/getPapersByUserId")
+    @CrossOrigin
+    public Response getPapersByUserId(@RequestBody GetPapersRequest request) {
+        CommonResponse commonResponse = new CommonResponse();
+        List<PaperDTO> paperDTOList = paperService.getPaperByUserId(request.getUserId().toString(), request.getPageNum(), request.getPageSize());
+        commonResponse.setSuccess(true);
+        commonResponse.setData(paperDTOList);
         return commonResponse;
     }
 }

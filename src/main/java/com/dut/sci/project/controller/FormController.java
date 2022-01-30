@@ -33,6 +33,11 @@ public class FormController {
     @Resource
     private ImgService imgService;
 
+    /**
+     * 提交科创项目申请
+     * @param addFormRequest
+     * @return
+     */
     @PostMapping("form/addProjectForm")
     @CrossOrigin
     public CommonResponse addProjectForm(@RequestBody AddFormRequest addFormRequest){
@@ -47,11 +52,17 @@ public class FormController {
         formDTO.setContentDescription(addFormRequest.getContentDescription());
         formDTO.setApplicantId(addFormRequest.getApplicantId());
         formDTO.setFormType(FormTypeEnum.PROJECT.getTypeCode());
-        boolean success = formService.submitProjectForm(formDTO, projectDTO);
-        commonResponse.setSuccess(success);
+        Long formId = formService.submitProjectForm(formDTO, projectDTO);
+        commonResponse.setSuccess(true);
+        commonResponse.setData(formId);
         return commonResponse;
     }
 
+    /**
+     * 提交论文项目申请
+     * @param addPaperRequet
+     * @return
+     */
     @PostMapping("form/addPaperForm")
     @CrossOrigin
     public CommonResponse addPaperForm(@RequestBody AddPaperRequet addPaperRequet) {
@@ -67,11 +78,17 @@ public class FormController {
         formDTO.setContentDescription(addPaperRequet.getContentDescription());
         formDTO.setApplicantId(addPaperRequet.getApplicantId());
         formDTO.setFormType(FormTypeEnum.PAPER.getTypeCode());
-        boolean success = formService.submitProjectForm(formDTO, paperDTO);
-        commonResponse.setSuccess(success);
+        Long formId = formService.submitProjectForm(formDTO, paperDTO);
+        commonResponse.setSuccess(true);
+        commonResponse.setData(formId);
         return commonResponse;
     }
 
+    /**
+     * 拒绝一条申请工单
+     * @param rejectFormRequest
+     * @return
+     */
     @PostMapping("form/rejectForm")
     @CrossOrigin
     public CommonResponse rejectForm(@RequestBody RejectFormRequest rejectFormRequest) {
@@ -81,6 +98,11 @@ public class FormController {
         return commonResponse;
     }
 
+    /**
+     * 同意一条申请工单
+     * @param agreeFormRequest
+     * @return
+     */
     @PostMapping("form/agreeForm")
     @CrossOrigin
     public CommonResponse agreeForm(@RequestBody RejectFormRequest agreeFormRequest) {
@@ -90,6 +112,11 @@ public class FormController {
         return commonResponse;
     }
 
+    /**
+     * 撤销一条申请工单
+     * @param deleteFormRequest
+     * @return
+     */
     @PostMapping("form/deleteForm")
     @CrossOrigin
     public CommonResponse deleteForm(@RequestBody RejectFormRequest deleteFormRequest) {
@@ -99,6 +126,11 @@ public class FormController {
         return commonResponse;
     }
 
+    /**
+     * 分页所有工单列表 可根据申请人Id、审批人Id进行筛选
+     * @param getFormListRequest
+     * @return
+     */
     @PostMapping("form/getFormList")
     @CrossOrigin
     public CommonResponse getFormList(@RequestBody GetFormListRequest getFormListRequest) {
@@ -112,6 +144,11 @@ public class FormController {
         return commonResponse;
     }
 
+    /**
+     * 获取申请工单中的图片
+     * @param getFormImgRequest
+     * @return
+     */
     @PostMapping("form/getFormImg")
     @CrossOrigin
     public CommonResponse getFormImg(@RequestBody RejectFormRequest getFormImgRequest) {
@@ -119,6 +156,26 @@ public class FormController {
         List<String> imgList = imgService.getImgsByFormId(getFormImgRequest.getFormId());
         commonResponse.setSuccess(true);
         commonResponse.setData(imgList);
+        return commonResponse;
+    }
+
+    /**
+     * 提交申请证明图片
+     * @param files
+     * @param formId
+     * @return
+     * @throws IOException
+     */
+    @PostMapping("form/addFormImg")
+    @CrossOrigin
+    public CommonResponse addFormImg(@RequestParam("files") MultipartFile[] files, @RequestParam("formId") Long formId) throws IOException {
+        CommonResponse commonResponse = new CommonResponse();
+        List<byte[]> imgList = Lists.newArrayList();
+        for(MultipartFile file : files) {
+            imgList.add(file.getBytes());
+        }
+        boolean success = imgService.addImgs(imgList, formId);
+        commonResponse.setSuccess(success);
         return commonResponse;
     }
 }

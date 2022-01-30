@@ -10,7 +10,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 public class UserRepository {
@@ -56,5 +59,19 @@ public class UserRepository {
         }
         List<UserDO> userDOList = userDOMapper.selectByExample(userDOExample);
         return UserConverter.convertToDTOList(userDOList);
+    }
+
+    public List<String> getAllCollege() {
+        UserDOExample userDOExample = new UserDOExample();
+        UserDOExample.Criteria criteria = userDOExample.createCriteria();
+        criteria.andUserGenderEqualTo(false);
+        int year = new Date().getYear() + 1900 - 1;
+        criteria.andUserYearEqualTo(year);
+        List<UserDO> userDOList = userDOMapper.selectByExample(userDOExample);
+        if (CollectionUtils.isEmpty(userDOList)) {
+            return null;
+        }
+        Set<String> collegeSet = userDOList.stream().map(e -> e.getUserCollege()).collect(Collectors.toSet());
+        return collegeSet.stream().collect(Collectors.toList());
     }
 }

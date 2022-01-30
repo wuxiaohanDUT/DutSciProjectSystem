@@ -40,7 +40,7 @@ public class FormService {
     private ImgRepository imgRepository;
 
     @Transactional
-    public Boolean submitProjectForm(FormDTO formDTO, Object projectOrPaperDTO) {
+    public Long submitProjectForm(FormDTO formDTO, Object projectOrPaperDTO) {
         Date submitTime = new Date(System.currentTimeMillis());
         formDTO.setSubmitTime(submitTime);
         formDTO.setFormStatus(FormStatusEnum.AUDITING.getTypeCode().byteValue());
@@ -53,7 +53,7 @@ public class FormService {
             formDTO.setProjectId(projectId);
         }
         success &= formRepository.addForm(formDTO);
-        return success;
+        return formDTO.getFormId();
     }
 
     public Boolean rejectForm(Long formId, Long reviewerId) {

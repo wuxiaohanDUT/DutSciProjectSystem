@@ -23,6 +23,11 @@ public class LoginController {
     @Resource
     private TokenService tokenService;
 
+    /**
+     * 用户登录
+     * @param loginRequest
+     * @return
+     */
     @PostMapping("user/login")
     @CrossOrigin
     public LoginResponse Login(@RequestBody LoginRequest loginRequest) {

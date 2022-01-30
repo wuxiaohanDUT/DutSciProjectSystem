@@ -10,6 +10,7 @@ import com.dut.sci.project.mapper.ProjectDOMapper;
 import com.dut.sci.project.mapper.UserDOMapper;
 import com.dut.sci.project.repository.UserRepository;
 import com.dut.sci.project.request.*;
+import com.dut.sci.project.service.DataService;
 import com.dut.sci.project.service.UserService;
 import io.jsonwebtoken.lang.Assert;
 import org.assertj.core.util.Lists;
@@ -37,6 +38,9 @@ public class LoginTest {
 
     @Resource
     private ProjectDOMapper projectDOMapper;
+
+    @Resource
+    private DataService dataService;
 
     @Test
     public void TestUserService() {
@@ -81,5 +85,13 @@ public class LoginTest {
         addPaperRequet.setPublicationPeriodical("123");
         addPaperRequet.setPublicationTime(new Date());
         System.out.println(JSON.toJSON(addPaperRequet));
+    }
+    @Test
+    public void dataTest() {
+        int year = new Date().getYear();
+        Date begin = new Date(year, 0, 1);
+        Date end = new Date(year+1, 0, 1);
+        System.out.println(begin.getTime() +" " +end.getTime());
+        System.out.println(dataService.getCollegeFormNums(begin, end, (byte)0));
     }
 }

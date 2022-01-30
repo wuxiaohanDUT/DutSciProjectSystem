@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -38,5 +39,9 @@ public class UserService {
         UserDTO userDTO = userRepository.getUserDTOById(userId);
         userDTO.setUserPassword(null);
         return userDTO;
+    }
+
+    public List<String> getAllCollege() {
+        return userRepository.getAllCollege();
     }
 }

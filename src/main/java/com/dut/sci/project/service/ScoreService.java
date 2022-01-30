@@ -64,7 +64,7 @@ public class ScoreService {
         return userPointsDTOList.stream().sorted(new Comparator<UserPointsDTO>() {
             @Override
             public int compare(UserPointsDTO o1, UserPointsDTO o2) {
-                return o1.getPoints() - o2.getPoints();
+                return o2.getPoints() - o1.getPoints();
             }
         }).collect(Collectors.toList());
     }
