@@ -10,6 +10,8 @@ public class FormDTO {
 
     private Byte formStatus;
 
+    private String formStatusDescription;
+
     private Long reviewerId;
 
     private String reviewerName;
@@ -27,4 +29,6 @@ public class FormDTO {
     private Long projectId;
 
     private Integer formType;
+
+    private String formTypeDes;
 }

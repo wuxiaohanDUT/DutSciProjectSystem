@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public enum FormStatusEnum {
 
-    AUDITING(0, "审核中"),
-    AUDIT_COMPLETED(1, "审核完成"),
+    AUDITING(0, "待审核"),
+    AUDIT_COMPLETED(1, "审核通过"),
     AUDIT_FAILED(2, "审核未通过");
 
     private Integer typeCode;
@@ -16,7 +16,7 @@ public enum FormStatusEnum {
         this.typeName = typeName;
     }
 
-    public FormStatusEnum valueOf(Integer typeCode) {
+    public static FormStatusEnum valueOf(Integer typeCode) {
         return Arrays.stream(FormStatusEnum.values()).filter(e -> {
             return e.getTypeCode().equals(typeCode);
         }).findFirst().get();

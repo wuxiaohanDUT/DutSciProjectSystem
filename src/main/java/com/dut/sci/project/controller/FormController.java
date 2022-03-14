@@ -168,7 +168,7 @@ public class FormController {
      */
     @PostMapping("form/addFormImg")
     @CrossOrigin
-    public CommonResponse addFormImg(@RequestParam("files") MultipartFile[] files, @RequestParam("formId") Long formId) throws IOException {
+    public CommonResponse addFormImg(@RequestParam("files") MultipartFile[] files, Long formId) throws IOException {
         CommonResponse commonResponse = new CommonResponse();
         List<byte[]> imgList = Lists.newArrayList();
         for(MultipartFile file : files) {

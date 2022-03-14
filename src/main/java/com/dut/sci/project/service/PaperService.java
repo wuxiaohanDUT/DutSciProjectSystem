@@ -9,6 +9,7 @@ import com.dut.sci.project.repository.UserRepository;
 import org.assertj.core.util.Lists;
 import org.assertj.core.util.Sets;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -60,13 +61,15 @@ public class PaperService {
         }
         PaperDTO paperDTO = paperRepository.getPaperById(formDTO.getProjectId());
         List<Long> authorIds = Lists.newArrayList();
-        for (String id : paperDTO.getAuthorIds()) {
-            authorIds.add(Long.valueOf(id));
+        if (!CollectionUtils.isEmpty(authorIds)) {
+            for (String id : paperDTO.getAuthorIds()) {
+                authorIds.add(Long.valueOf(id));
+            }
+            List<UserDTO> userDTOList = userRepository.getUserDTOListByIds(authorIds);
+            List<String> authorNames = Lists.newArrayList();
+            userDTOList.stream().forEach(e -> authorNames.add(e.getUserName()));
+            paperDTO.setAuthorNames(authorNames);
         }
-        List<UserDTO> userDTOList = userRepository.getUserDTOListByIds(authorIds);
-        List<String> authorNames = Lists.newArrayList();
-        userDTOList.stream().forEach(e -> authorNames.add(e.getUserName()));
-        paperDTO.setAuthorNames(authorNames);
         return paperDTO;
     }
 }

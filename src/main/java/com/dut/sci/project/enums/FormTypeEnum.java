@@ -14,7 +14,7 @@ public enum FormTypeEnum {
         this.typeName = typeName;
     }
 
-    public FormTypeEnum valueOf(Integer typeCode) {
+    public static FormTypeEnum valueOf(Integer typeCode) {
         return Arrays.stream(FormTypeEnum.values()).filter(e -> {
             return e.getTypeCode().equals(typeCode);
         }).findFirst().get();

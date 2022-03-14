@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, form_id
+    id, form_id, bytes
   </sql>
   <sql id="Blob_Column_List">
     bytes

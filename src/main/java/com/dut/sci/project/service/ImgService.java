@@ -4,6 +4,7 @@ import com.dut.sci.project.domain.ImgDO;
 import com.dut.sci.project.repository.ImgRepository;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.Base64;
@@ -29,8 +30,10 @@ public class ImgService {
     public List<String> getImgsByFormId(Long formId) {
         List<ImgDO> imgDOList = imgRepository.getImgsByFormId(formId);
         List<String> base64List = Lists.newArrayList();
-        for (ImgDO imgDO : imgDOList) {
-            base64List.add(Base64.getEncoder().encodeToString(imgDO.getBytes()));
+        if (!CollectionUtils.isEmpty(imgDOList)) {
+            for (ImgDO imgDO : imgDOList) {
+                base64List.add(Base64.getEncoder().encodeToString(imgDO.getBytes()));
+            }
         }
         return base64List;
     }

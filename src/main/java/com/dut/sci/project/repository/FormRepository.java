@@ -20,8 +20,10 @@ public class FormRepository {
     @Resource
     private FormDOMapper formDOMapper;
 
-    public Boolean addForm(FormDTO formDTO) {
-        return formDOMapper.insert(FormConverter.formDTO2DO(formDTO)) > 0;
+    public Long addForm(FormDTO formDTO) {
+        FormDO formDO = FormConverter.formDTO2DO(formDTO);
+        formDOMapper.insert(formDO);
+        return formDO.getFormId();
     }
 
     public Boolean deleteFormById(Long id) {

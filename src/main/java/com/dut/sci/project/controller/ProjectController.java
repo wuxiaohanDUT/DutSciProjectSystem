@@ -114,7 +114,7 @@ public class ProjectController {
      * @param getProjectRequest
      * @return
      */
-    @GetMapping("project/getProjectDetail")
+    @PostMapping("project/getProjectDetail")
     @CrossOrigin
     public Response getProjectDetail(@RequestBody GetProjectRequest getProjectRequest) {
         CommonResponse commonResponse = new CommonResponse();
@@ -128,7 +128,7 @@ public class ProjectController {
      * @param getProjectRequest
      * @return
      */
-    @GetMapping("project/getPaperDetail")
+    @PostMapping("project/getPaperDetail")
     @CrossOrigin
     public Response getPaperDetail(@RequestBody GetProjectRequest getProjectRequest) {
         CommonResponse commonResponse = new CommonResponse();

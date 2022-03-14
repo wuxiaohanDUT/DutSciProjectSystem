@@ -44,7 +44,6 @@ public class FormService {
         Date submitTime = new Date(System.currentTimeMillis());
         formDTO.setSubmitTime(submitTime);
         formDTO.setFormStatus(FormStatusEnum.AUDITING.getTypeCode().byteValue());
-        Boolean success = true;
         if (formDTO.getFormType().equals(FormTypeEnum.PAPER.getTypeCode())){
             Long paperId = paperRepository.addPaper((PaperDTO) projectOrPaperDTO);
             formDTO.setProjectId(paperId);
@@ -52,8 +51,7 @@ public class FormService {
             Long projectId = projectRepository.addProject((ProjectDTO) projectOrPaperDTO);
             formDTO.setProjectId(projectId);
         }
-        success &= formRepository.addForm(formDTO);
-        return formDTO.getFormId();
+        return formRepository.addForm(formDTO);
     }
 
     public Boolean rejectForm(Long formId, Long reviewerId) {
@@ -142,6 +140,8 @@ public class FormService {
             e.setReviewerName(reviewerName);
             String applicantName = id2Name.get(e.getApplicantId());
             e.setApplicantName(applicantName);
+            e.setFormStatusDescription(FormStatusEnum.valueOf(e.getFormStatus().intValue()).getTypeName());
+            e.setFormTypeDes(FormTypeEnum.valueOf(e.getFormType().intValue()).getTypeName());
         });
         return formDTOList;
     }
