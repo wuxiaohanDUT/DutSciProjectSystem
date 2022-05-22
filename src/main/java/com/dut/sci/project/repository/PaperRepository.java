@@ -38,7 +38,7 @@ public class PaperRepository {
     public List<PaperDTO> getPaperByUserId(String userId, Integer pageNum, Integer pageSize) {
         PaperDOExample paperDOExample = new PaperDOExample();
         PaperDOExample.Criteria criteria = paperDOExample.createCriteria();
-        criteria.andAuthorIdsLike(userId);
+        criteria.andAuthorIdsLike("%" + userId + "%");
         List<PaperDO> paperDOList = paperDOMapper.selectByExampleWithRowbounds(paperDOExample, new RowBounds((pageNum - 1) * pageSize, pageSize));
         return PaperConverter.paperDOList2DTOList(paperDOList);
     }

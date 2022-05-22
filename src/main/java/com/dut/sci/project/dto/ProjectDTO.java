@@ -14,7 +14,11 @@ public class ProjectDTO {
 
     private List<Long> participantIds;
 
+    private List<String> participantNames;
+
     private String awardLevel;
+
+    private String awardType;
 
     private String instructorNames;
 

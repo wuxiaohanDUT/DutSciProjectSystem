@@ -23,8 +23,8 @@ public class ScoreService {
     @Resource
     private UserRepository userRepository;
 
-    public List<ScoreRecordDTO> getUserScoreRecord(Long userId, Date beginTime, Date endTIme) {
-        return scoreRecordRepository.getUserScoreRecord(userId, beginTime, endTIme);
+    public List<ScoreRecordDTO> getUserScoreRecord(Long userId, Date beginTime, Date endTIme, Integer pageNum, Integer pageSize) {
+        return scoreRecordRepository.getUserScoreRecord(userId, beginTime, endTIme, (pageNum - 1) * pageSize, pageSize);
     }
 
     public List<UserPointsDTO> getUserPoints(Date begin, Date end, Integer year, String college) {

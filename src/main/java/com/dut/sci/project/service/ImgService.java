@@ -30,9 +30,11 @@ public class ImgService {
     public List<String> getImgsByFormId(Long formId) {
         List<ImgDO> imgDOList = imgRepository.getImgsByFormId(formId);
         List<String> base64List = Lists.newArrayList();
+        String base64Str = "data:" + "image/png" + ";base64,";
         if (!CollectionUtils.isEmpty(imgDOList)) {
             for (ImgDO imgDO : imgDOList) {
-                base64List.add(Base64.getEncoder().encodeToString(imgDO.getBytes()));
+                String content = Base64.getEncoder().encodeToString(imgDO.getBytes());
+                base64List.add(base64Str + content);
             }
         }
         return base64List;

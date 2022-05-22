@@ -49,9 +49,6 @@ public class PaperConverter {
     }
 
     public static List<PaperDTO> paperDOList2DTOList(List<PaperDO> paperDOList) {
-        if (CollectionUtils.isEmpty(paperDOList)) {
-            return null;
-        }
         List<PaperDTO> paperDTOList = Lists.newArrayList();
         for (PaperDO paperDO : paperDOList) {
             PaperDTO paperDTO = paperDO2DTO(paperDO);

@@ -119,7 +119,9 @@ public class ProjectController {
     public Response getProjectDetail(@RequestBody GetProjectRequest getProjectRequest) {
         CommonResponse commonResponse = new CommonResponse();
         ProjectDTO projectDTO = projectService.getProjectDetailByFormId(getProjectRequest.getFormId());
+        System.out.println(projectDTO);
         commonResponse.setData(projectDTO);
+        commonResponse.setSuccess(true);
         return commonResponse;
     }
 
@@ -134,6 +136,7 @@ public class ProjectController {
         CommonResponse commonResponse = new CommonResponse();
         PaperDTO paperDTO = paperService.getPaperDetailByFormId(getProjectRequest.getFormId());
         commonResponse.setData(paperDTO);
+        commonResponse.setSuccess(true);
         return commonResponse;
     }
 
@@ -151,4 +154,15 @@ public class ProjectController {
         commonResponse.setData(paperDTOList);
         return commonResponse;
     }
+
+    @PostMapping("project/getProjectDetailByProjectId")
+    @CrossOrigin
+    public Response getProjectDetailByProjectId(@RequestBody GetProjectRequest getProjectRequest) {
+        CommonResponse commonResponse = new CommonResponse();
+        ProjectDTO projectDTO = projectService.getProjectById(getProjectRequest.getProjectId());
+        commonResponse.setData(projectDTO);
+        commonResponse.setSuccess(true);
+        return commonResponse;
+    }
+
 }

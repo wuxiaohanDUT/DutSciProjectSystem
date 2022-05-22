@@ -1,10 +1,7 @@
 package com.dut.sci.project.service;
 
 import com.dut.sci.project.dto.*;
-import com.dut.sci.project.repository.FormRepository;
-import com.dut.sci.project.repository.IntegralRuleRepository;
-import com.dut.sci.project.repository.ProjectRepository;
-import com.dut.sci.project.repository.ProjectTypeRepository;
+import com.dut.sci.project.repository.*;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -26,6 +23,9 @@ public class ProjectService {
 
     @Resource
     private ProjectRepository projectRepository;
+
+    @Resource
+    private UserRepository userRepository;
 
     public List<ProjectTypeDTO> getAllTypes() {
         return projectTypeRepository.getAllProjectTypeList();
@@ -81,6 +81,35 @@ public class ProjectService {
             return null;
         }
         ProjectDTO projectDTO = projectRepository.getProjectById(formDTO.getProjectId());
+        List<Long> ids = projectDTO.getParticipantIds();
+        List<String> names = Lists.newArrayList();
+        for (Long id : ids) {
+            UserDTO userDTO = userRepository.getUserDTOById(id);
+            if (userDTO != null) {
+                String name = userDTO.getUserName() + " " + id;
+                names.add(name);
+            }
+        }
+        String typeName = projectTypeRepository.getTypeNameById(projectDTO.getProjectType());
+        projectDTO.setAwardType(typeName);
+        projectDTO.setParticipantNames(names);
+        return projectDTO;
+    }
+
+    public ProjectDTO getProjectById(Long projectId) {
+        ProjectDTO projectDTO = projectRepository.getProjectById(projectId);
+        List<Long> ids = projectDTO.getParticipantIds();
+        List<String> names = Lists.newArrayList();
+        for (Long id : ids) {
+            UserDTO userDTO = userRepository.getUserDTOById(id);
+            if (userDTO != null) {
+                String name = userDTO.getUserName() + " " + id;
+                names.add(name);
+            }
+        }
+        String typeName = projectTypeRepository.getTypeNameById(projectDTO.getProjectType());
+        projectDTO.setAwardType(typeName);
+        projectDTO.setParticipantNames(names);
         return projectDTO;
     }
 }

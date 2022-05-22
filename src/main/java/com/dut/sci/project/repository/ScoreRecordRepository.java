@@ -5,6 +5,7 @@ import com.dut.sci.project.domain.ScoreRecordDO;
 import com.dut.sci.project.domain.ScoreRecordDOExample;
 import com.dut.sci.project.dto.ScoreRecordDTO;
 import com.dut.sci.project.mapper.ScoreRecordDOMapper;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -33,7 +34,7 @@ public class ScoreRecordRepository {
         return scoreRecordDOMapper.deleteByExample(scoreRecordDOExample) > 0;
     }
 
-    public List<ScoreRecordDTO> getUserScoreRecord(Long userId, Date begin, Date end) {
+    public List<ScoreRecordDTO> getUserScoreRecord(Long userId, Date begin, Date end, Integer pageNum, Integer pageSize) {
         ScoreRecordDOExample scoreRecordDOExample = new ScoreRecordDOExample();
         ScoreRecordDOExample.Criteria criteria = scoreRecordDOExample.createCriteria();
         if (userId != null) {
@@ -45,7 +46,7 @@ public class ScoreRecordRepository {
         if (end != null) {
             criteria.andAchieveTimeLessThanOrEqualTo(end);
         }
-        List<ScoreRecordDO> scoreRecordDTOList = scoreRecordDOMapper.selectByExample(scoreRecordDOExample);
+        List<ScoreRecordDO> scoreRecordDTOList = scoreRecordDOMapper.selectByExampleWithRowbounds(scoreRecordDOExample, new RowBounds(pageNum, pageSize));
         return ScoreRecordConverter.scoreRecordDOList2DTOList(scoreRecordDTOList);
     }
 

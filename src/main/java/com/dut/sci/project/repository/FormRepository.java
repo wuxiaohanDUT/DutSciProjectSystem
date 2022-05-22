@@ -5,6 +5,7 @@ import com.dut.sci.project.domain.FormDO;
 import com.dut.sci.project.domain.FormDOExample;
 import com.dut.sci.project.dto.FormDTO;
 import com.dut.sci.project.enums.FormStatusEnum;
+import com.dut.sci.project.enums.FormTypeEnum;
 import com.dut.sci.project.mapper.FormDOMapper;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
@@ -30,7 +31,7 @@ public class FormRepository {
         return formDOMapper.deleteByPrimaryKey(id) > 0;
     }
 
-    public List<FormDTO> getFormsById(Long applicantId, Long reviewerId, Integer pageNum, Integer pageSize) {
+    public List<FormDTO> getFormsById(Long applicantId, Long reviewerId, Integer pageNum, Integer pageSize, Boolean isProject, Boolean isPaper, Boolean isChecking, Boolean isPassed, Boolean isFailed) {
         FormDOExample formDOExample = new FormDOExample();
         FormDOExample.Criteria criteria = formDOExample.createCriteria();
         if (applicantId != null) {
@@ -38,6 +39,21 @@ public class FormRepository {
         }
         if (reviewerId != null) {
             criteria.andReviewerIdEqualTo(reviewerId);
+        }
+        if (isProject) {
+            criteria.andFormTypeEqualTo(FormTypeEnum.PROJECT.getTypeCode());
+        }
+        if (isPaper) {
+            criteria.andFormTypeEqualTo(FormTypeEnum.PAPER.getTypeCode());
+        }
+        if (isChecking) {
+            criteria.andFormStatusEqualTo(FormStatusEnum.AUDITING.getTypeCode().byteValue());
+        }
+        if (isPassed) {
+            criteria.andFormStatusEqualTo(FormStatusEnum.AUDIT_COMPLETED.getTypeCode().byteValue());
+        }
+        if (isFailed) {
+            criteria.andFormStatusEqualTo(FormStatusEnum.AUDIT_FAILED.getTypeCode().byteValue());
         }
         List<FormDO> formDOList = formDOMapper.selectByExampleWithRowbounds(formDOExample, new RowBounds(pageNum, pageSize));
         if (CollectionUtils.isEmpty(formDOList)) {

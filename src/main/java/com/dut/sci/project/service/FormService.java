@@ -61,6 +61,7 @@ public class FormService {
         formDTO.setReviewerId(reviewerId);
         Date passTime = new Date(System.currentTimeMillis());
         formDTO.setPassTime(passTime);
+        FormDTO oldFormDTO = formRepository.getFormById(formId);
         return formRepository.updateForm(formDTO);
     }
 
@@ -123,8 +124,8 @@ public class FormService {
         return success;
     }
 
-    public List<FormDTO> getForms(Long applicantId, Long reviewerId, Integer pageNum, Integer pageSize) {
-        List<FormDTO> formDTOList = formRepository.getFormsById(applicantId, reviewerId, (pageNum - 1) * pageSize, pageSize);
+    public List<FormDTO> getForms(Long applicantId, Long reviewerId, Integer pageNum, Integer pageSize, Boolean isProject, Boolean isPaper, Boolean isChecking, Boolean isPassed, Boolean isFailed) {
+        List<FormDTO> formDTOList = formRepository.getFormsById(applicantId, reviewerId, (pageNum - 1) * pageSize, pageSize, isProject, isPaper, isChecking, isPassed, isFailed);
         if (CollectionUtils.isEmpty(formDTOList)) {
             return null;
         }

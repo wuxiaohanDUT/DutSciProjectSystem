@@ -17,11 +17,11 @@ public class ImgRepository {
 
     public Boolean addImgs(List<ImgDO> imgDOList) {
         if (imgDOList == null) {
-            return false;
+            return true;
         }
         boolean success = true;
         for (ImgDO imgDO : imgDOList) {
-            success &= imgDOMapper.insert(imgDO) > 0;
+            success &= imgDOMapper.insert(imgDO) >= 0;
         }
         return success;
     }

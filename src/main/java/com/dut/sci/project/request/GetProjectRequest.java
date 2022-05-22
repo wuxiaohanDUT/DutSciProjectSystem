@@ -6,5 +6,5 @@ import lombok.Data;
 public class GetProjectRequest extends Request{
 
     private Long formId;
-
+    private Long projectId;
 }

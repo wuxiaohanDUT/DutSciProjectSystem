@@ -61,15 +61,20 @@ public class PaperService {
         }
         PaperDTO paperDTO = paperRepository.getPaperById(formDTO.getProjectId());
         List<Long> authorIds = Lists.newArrayList();
-        if (!CollectionUtils.isEmpty(authorIds)) {
+        if (!CollectionUtils.isEmpty(paperDTO.getAuthorIds())) {
             for (String id : paperDTO.getAuthorIds()) {
                 authorIds.add(Long.valueOf(id));
             }
-            List<UserDTO> userDTOList = userRepository.getUserDTOListByIds(authorIds);
-            List<String> authorNames = Lists.newArrayList();
-            userDTOList.stream().forEach(e -> authorNames.add(e.getUserName()));
-            paperDTO.setAuthorNames(authorNames);
         }
+        List<String> names = Lists.newArrayList();
+        for (Long id : authorIds) {
+            UserDTO userDTO = userRepository.getUserDTOById(id);
+            if (userDTO != null) {
+                String name = userDTO.getUserName() + " " + userDTO.getUserId();
+                names.add(name);
+            }
+        }
+        paperDTO.setAuthorNames(names);
         return paperDTO;
     }
 }

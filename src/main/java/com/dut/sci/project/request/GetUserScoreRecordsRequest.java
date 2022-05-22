@@ -12,5 +12,7 @@ public class GetUserScoreRecordsRequest extends Request {
     private Date end;
     private Integer year;
     private String college;
+    private Integer pageNum;
+    private Integer pageSize;
 
 }

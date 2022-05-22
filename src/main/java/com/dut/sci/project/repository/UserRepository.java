@@ -6,6 +6,7 @@ import com.dut.sci.project.domain.UserDOExample;
 import com.dut.sci.project.dto.UserDTO;
 import com.dut.sci.project.mapper.UserDOMapper;
 import org.apache.ibatis.session.RowBounds;
+import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
@@ -30,6 +31,9 @@ public class UserRepository {
     }
 
     public List<UserDTO> getUserDTOListByIds(List<Long> userIds) {
+        if (CollectionUtils.isEmpty(userIds)) {
+            return Lists.newArrayList();
+        }
         UserDOExample userDOExample = new UserDOExample();
         UserDOExample.Criteria criteria = userDOExample.createCriteria();
         criteria.andUserIdIn(userIds);

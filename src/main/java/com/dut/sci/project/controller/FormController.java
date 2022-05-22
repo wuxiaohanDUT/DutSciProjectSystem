@@ -138,7 +138,12 @@ public class FormController {
         List<FormDTO> formDTOList = formService.getForms(getFormListRequest.getApplicantId(),
                 getFormListRequest.getReviewerId(),
                 getFormListRequest.getPageNum(),
-                getFormListRequest.getPageSize());
+                getFormListRequest.getPageSize(),
+                getFormListRequest.getIsProject(),
+                getFormListRequest.getIsPaper(),
+                getFormListRequest.getIsChecking(),
+                getFormListRequest.getIsPassed(),
+                getFormListRequest.getIsFailed());
         commonResponse.setSuccess(true);
         commonResponse.setData(formDTOList);
         return commonResponse;
